@@ -12,7 +12,7 @@ node {
 		}
 
 		stage("Build") {
-			bat("\"${tool 'MSBuild15'}\" Winton.AspNetCore.Seo.sln /t:JenkinsBuild /p:Platform=\"Any CPU\" /p:Configuration=Release")
+			bat("\"${tool 'MSBuild15'}\" Winton.AspNetCore.Seo.sln /t:Jenkins /p:Platform=\"Any CPU\" /p:Configuration=Release")
 		}
 
 		stage("Test") {
