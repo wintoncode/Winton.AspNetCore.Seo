@@ -6,15 +6,15 @@ It adds a default robots.txt and sitemap.xml to the web app.
 ## How Do I Use It?
 1. Install the package:
 
-	```sh
-	Install-Package Winton.AspNetCore.Seo
-	```
+    ```sh
+    Install-Package Winton.AspNetCore.Seo
+    ```
 
 2. Add services. For instance in `Startup.cs`
 
-	```csharp
-	public void ConfigureServices(IServiceCollection services)
-	{
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
         // Define the urls you want to show in the sitemap.xml
         var sitemapConfig = new SitemapConfig 
         {
@@ -25,14 +25,14 @@ It adds a default robots.txt and sitemap.xml to the web app.
             }
         }
         services.AddSeo(sitemapConfig);
-	}
-	```
+    }
+    ```
 
 3. Add SEO routes to MVC. For instance in `Startup.cs`:
-
-	```csharp
-	public void Configure(IApplicationBuilder app)
-	{
-		app.UseMvc(routeBuilder => routeBuilder.MapSeoRoutes());
-	}
-	```
+    
+    ```csharp
+    public void Configure(IApplicationBuilder app)
+    {
+        app.UseMvc(routeBuilder => routeBuilder.MapSeoRoutes());
+    }
+    ```
