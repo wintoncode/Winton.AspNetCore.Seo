@@ -33,6 +33,6 @@ It adds a default robots.txt and sitemap.xml to the web app.
 	```csharp
 	public void Configure(IApplicationBuilder app)
 	{
-        app.UseMvc(routeBuilder => routeBuilder.MapSeoRoutes());
+		app.UseMvc(routeBuilder => routeBuilder.MapSeoRoutes());
 	}
 	```
