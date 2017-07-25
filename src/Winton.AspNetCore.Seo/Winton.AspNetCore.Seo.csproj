@@ -6,10 +6,6 @@
   
   <Target Name="Jenkins" Condition="'$(Configuration)' == 'Release'" DependsOnTargets="GitVersionConfig;Pack" />
   
-  <PropertyGroup Label="Configuration">
-    <OutputType>Library</OutputType>
-  </PropertyGroup>
-  
   <PropertyGroup>
     <CodeAnalysisAdditionalOptions>/additionalfile:../../stylecop.json</CodeAnalysisAdditionalOptions>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
@@ -24,6 +20,7 @@
     <PackageTags>Winton, ASP.NET, Core, SEO</PackageTags>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <OutputType>Library</OutputType>
     <OutputTypeEx>library</OutputTypeEx>
   </PropertyGroup>
   
