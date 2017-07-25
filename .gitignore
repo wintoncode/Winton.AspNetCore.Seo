@@ -31,6 +31,10 @@ bld/
 *.VisualState.xml
 TestResult.xml
 
+# .NET Core
+artifacts/
+**/Properties/launchSettings.json
+
 # Visual C++ cache files
 ipch/
 *.aps
