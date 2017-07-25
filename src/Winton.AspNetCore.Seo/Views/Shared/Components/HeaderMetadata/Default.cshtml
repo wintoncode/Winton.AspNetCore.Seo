@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@model Winton.AspNetCore.Seo.HeaderMetadata.HeaderMetadataViewModel
+@inject IHostingEnvironment Environment
+
+@if (!Environment.IsProduction())
+{
+    <meta name="robots" content="none" />
+}
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="@Model.Title" />
+<meta property="og:description" content="@Model.Description" />

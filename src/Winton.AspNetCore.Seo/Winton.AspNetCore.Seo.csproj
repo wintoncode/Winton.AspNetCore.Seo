@@ -6,7 +6,7 @@
   
   <Target Name="Jenkins" Condition="'$(Configuration)' == 'Release'" DependsOnTargets="GitVersionConfig;Pack" />
   
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Label="Configuration">
     <OutputType>Library</OutputType>
   </PropertyGroup>
   
@@ -24,17 +24,19 @@
     <PackageTags>Winton, ASP.NET, Core, SEO</PackageTags>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <ApplicationIcon />
     <OutputTypeEx>library</OutputTypeEx>
-    <StartupObject />
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Content Remove="Views\Shared\Components\HeaderMetadata\Default.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Views\Shared\Components\OgMetadata\Default.cshtml" />
+    <EmbeddedResource Include="Views\Shared\Components\HeaderMetadata\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

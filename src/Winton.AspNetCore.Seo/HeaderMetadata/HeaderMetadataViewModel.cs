@@ -1,6 +1,6 @@
-﻿namespace Winton.AspNetCore.Seo.OpenGraph
+﻿namespace Winton.AspNetCore.Seo.HeaderMetadata
 {
-    public sealed class OgMetadataViewModel
+    public sealed class HeaderMetadataViewModel
     {
         public string Title { get; set; }
 
