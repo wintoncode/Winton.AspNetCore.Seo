@@ -8,4 +8,11 @@
 }
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@Model.Title" />
-<meta property="og:description" content="@Model.Description" />
+@if (!string.IsNullOrWhiteSpace(Model.Description))
+{
+    <meta property="og:description" content="@Model.Description" />
+}
+@if (!string.IsNullOrWhiteSpace(Model.Image))
+{
+    <meta property="og:image" content="@Model.Image" />
+}
