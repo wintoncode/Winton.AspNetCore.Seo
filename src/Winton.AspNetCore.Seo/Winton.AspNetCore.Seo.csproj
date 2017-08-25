@@ -47,7 +47,5 @@
   <Target Name="GitVersionConfig" BeforeTargets="Build">
     <Copy SourceFiles="..\..\gitversion.config\GitVersionConfig.yaml" DestinationFolder="..\.." />
   </Target>
-  
-  <Target Name="Jenkins" Condition="'$(Configuration)' == 'Release'" DependsOnTargets="GitVersionConfig;Pack" />
 
 </Project>
