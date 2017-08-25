@@ -7,13 +7,12 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata
 {
     internal static class ServiceCollectionExtensions
     {
-        public static void AddHeaderMetadata(this IServiceCollection services)
+        public static IServiceCollection AddHeaderMetadata(this IServiceCollection services)
         {
             Assembly assembly = typeof(ServiceCollectionExtensions).GetTypeInfo().Assembly;
-
             var embeddedFileProvider = new EmbeddedFileProvider(assembly, assembly.GetName().Name);
-
             services.Configure<RazorViewEngineOptions>(options => { options.FileProviders.Add(embeddedFileProvider); });
+            return services;
         }
     }
 }

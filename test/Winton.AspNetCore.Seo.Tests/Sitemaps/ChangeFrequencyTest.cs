@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.Serialization;
 using FluentAssertions;
 using Winton.AspNetCore.Seo.Sitemaps;

@@ -12,13 +12,26 @@ namespace Winton.AspNetCore.Seo.Extensions
     {
         public static IServiceCollection AddSeo(this IServiceCollection services, ISitemapConfig sitemapConfig)
         {
-            services.AddMvcCore(options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.TryAddTransient<IRobotsTxtFactory, RobotsTxtFactory>();
             services.TryAddSingleton(sitemapConfig);
+            return services.AddSeo();
+        }
+
+        public static IServiceCollection AddSeo<TSitemapConfig>(this IServiceCollection services)
+            where TSitemapConfig : class, ISitemapConfig
+        {
+            services.TryAddSingleton<ISitemapConfig, TSitemapConfig>();
+            return services.AddSeo();
+        }
+
+        private static IServiceCollection AddSeo(this IServiceCollection services)
+        {
+            services.AddMvcCore(
+                options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.TryAddSingleton<IRobotsTxtOptions, DefaultRobotsTxtOptions>();
+            services.TryAddTransient<IRobotsTxtFactory, RobotsTxtFactory>();
             services.TryAddSingleton<ISitemapFactory, SitemapFactory>();
-            services.AddHeaderMetadata();
-            return services;
+            return services.AddHeaderMetadata();
         }
     }
 }

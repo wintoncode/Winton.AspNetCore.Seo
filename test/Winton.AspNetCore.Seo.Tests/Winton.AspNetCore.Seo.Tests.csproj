@@ -1,17 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <CodeAnalysisAdditionalOptions>/additionalfile:../../stylecop.json</CodeAnalysisAdditionalOptions>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);SA1633;SA1413;SA1309;SA0001;SA1101</NoWarn>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SA0001;SA1101;SA1309;SA1413;SA1633</NoWarn>
     <PackageId>Winton.AspNetCore.Seo.Tests</PackageId>
     <PackageVersion>$(Version)</PackageVersion>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\stylecop.json" />
+    <AdditionalFiles Include="../../stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
