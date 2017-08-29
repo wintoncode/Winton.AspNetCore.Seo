@@ -9,6 +9,53 @@ namespace Winton.AspNetCore.Seo.Tests
 {
     public class SeoControllerTest
     {
+        public sealed class GetRobots : SeoControllerTest
+        {
+            private static ISitemapFactory GetSitemapFactory()
+            {
+                return new Mock<ISitemapFactory>(MockBehavior.Strict).Object;
+            }
+
+            [Fact]
+            private void ShouldReturnContentResult()
+            {
+                var robotsFactoryMock = new Mock<IRobotsTxtFactory>(MockBehavior.Strict);
+                robotsFactoryMock.Setup(rf => rf.Create()).Returns(string.Empty);
+
+                var seoController = new SeoController(robotsFactoryMock.Object, GetSitemapFactory());
+
+                IActionResult robotsResult = seoController.GetRobots();
+
+                robotsResult.Should().BeOfType<ContentResult>();
+            }
+
+            [Fact]
+            private void ShouldReturnCorrectContent()
+            {
+                var robotsFactoryMock = new Mock<IRobotsTxtFactory>(MockBehavior.Strict);
+                robotsFactoryMock.Setup(rf => rf.Create()).Returns("User-agent: *");
+
+                var seoController = new SeoController(robotsFactoryMock.Object, GetSitemapFactory());
+
+                IActionResult robotsResult = seoController.GetRobots();
+
+                robotsResult.As<ContentResult>().Content.Should().BeEquivalentTo("User-agent: *");
+            }
+
+            [Fact]
+            private void ShouldReturnCorrectContentType()
+            {
+                var robotsFactoryMock = new Mock<IRobotsTxtFactory>(MockBehavior.Strict);
+                robotsFactoryMock.Setup(rf => rf.Create()).Returns(string.Empty);
+
+                var seoController = new SeoController(robotsFactoryMock.Object, GetSitemapFactory());
+
+                IActionResult robotsResult = seoController.GetRobots();
+
+                robotsResult.As<ContentResult>().ContentType.Should().BeEquivalentTo("text/plain; charset=utf-8");
+            }
+        }
+
         public sealed class GetSitemap : SeoControllerTest
         {
             private static IRobotsTxtFactory GetRobotsTxtFactory()
@@ -40,53 +87,6 @@ namespace Winton.AspNetCore.Seo.Tests
                 IActionResult sitemapResult = seoController.GetSitemap();
 
                 sitemapResult.As<ObjectResult>().Value.Should().BeSameAs(sitemap);
-            }
-        }
-
-        public sealed class GetRobots : SeoControllerTest
-        {
-            private static ISitemapFactory GetSitemapFactory()
-            {
-                return new Mock<ISitemapFactory>(MockBehavior.Strict).Object;
-            }
-
-            [Fact]
-            private void ShouldReturnContentResult()
-            {
-                var robotsFactoryMock = new Mock<IRobotsTxtFactory>(MockBehavior.Strict);
-                robotsFactoryMock.Setup(rf => rf.Create()).Returns(string.Empty);
-
-                var seoController = new SeoController(robotsFactoryMock.Object, GetSitemapFactory());
-
-                IActionResult robotsResult = seoController.GetRobots();
-
-                robotsResult.Should().BeOfType<ContentResult>();
-            }
-
-            [Fact]
-            private void ShouldReturnCorrectContentType()
-            {
-                var robotsFactoryMock = new Mock<IRobotsTxtFactory>(MockBehavior.Strict);
-                robotsFactoryMock.Setup(rf => rf.Create()).Returns(string.Empty);
-
-                var seoController = new SeoController(robotsFactoryMock.Object, GetSitemapFactory());
-
-                IActionResult robotsResult = seoController.GetRobots();
-
-                robotsResult.As<ContentResult>().ContentType.Should().BeEquivalentTo("text/plain; charset=utf-8");
-            }
-
-            [Fact]
-            private void ShouldReturnCorrectContent()
-            {
-                var robotsFactoryMock = new Mock<IRobotsTxtFactory>(MockBehavior.Strict);
-                robotsFactoryMock.Setup(rf => rf.Create()).Returns("User-agent: *");
-
-                var seoController = new SeoController(robotsFactoryMock.Object, GetSitemapFactory());
-
-                IActionResult robotsResult = seoController.GetRobots();
-
-                robotsResult.As<ContentResult>().Content.Should().BeEquivalentTo("User-agent: *");
             }
         }
     }

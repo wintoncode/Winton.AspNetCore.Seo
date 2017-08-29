@@ -1,6 +1,8 @@
-﻿using FluentAssertions;
-using Microsoft.AspNetCore.Hosting.Internal;
+﻿using System.Collections.Generic;
+using System.Text;
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
+using Moq;
 using Winton.AspNetCore.Seo.Robots;
 using Xunit;
 
@@ -8,56 +10,53 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
 {
     public class RobotsTxtFactoryTest
     {
+        private IRobotsTxtOptions CreateRobotsTxtOptions(
+            bool addSitemapUrl,
+            IEnumerable<UserAgentRecord> userAgentRecords = null)
+        {
+            var mock = new Mock<IRobotsTxtOptions>(MockBehavior.Strict);
+            mock.SetupGet(rto => rto.AddSitemapUrl).Returns(addSitemapUrl);
+            mock.SetupGet(rto => rto.UserAgentRecords).Returns(userAgentRecords);
+            return mock.Object;
+        }
+
         public sealed class Create : RobotsTxtFactoryTest
         {
-            private const string _ProductionEnvironmentName = "Production";
-            private const string _StagingEnvironmentName = "Staging";
-            private const string _DevelopmentEnvironmentName = "Development";
-
-            [Theory]
-            [InlineData(_ProductionEnvironmentName)]
-            [InlineData(_StagingEnvironmentName)]
-            [InlineData(_DevelopmentEnvironmentName)]
-            private void ShouldAllowAnyUserAgent(string environmentName)
+            [Fact]
+            private void ShouldAddAllUserAgentRecords()
             {
-                var hostingEnvironment = new HostingEnvironment
-                {
-                    EnvironmentName = environmentName
-                };
-                var robotsFactory = new RobotsTxtFactory(hostingEnvironment, new HttpContextAccessor());
+                var robotsFactory = new RobotsTxtFactory(
+                    new HttpContextAccessor(),
+                    CreateRobotsTxtOptions(
+                        false,
+                        new List<UserAgentRecord>
+                        {
+                            new UserAgentRecord
+                            {
+                                UserAgent = (UserAgent)"Google"
+                            },
+                            new UserAgentRecord
+                            {
+                                UserAgent = (UserAgent)"Bing"
+                            }
+                        }));
 
                 string robotsTxt = robotsFactory.Create();
 
-                robotsTxt.Contains("User-agent: *").Should().BeTrue();
+                string expected = new StringBuilder()
+                    .AppendLine("User-agent: Google")
+                    .AppendLine("Disallow: ")
+                    .AppendLine()
+                    .AppendLine("User-agent: Bing")
+                    .AppendLine("Disallow: ")
+                    .AppendLine()
+                    .ToString();
+                robotsTxt.Should().Contain(expected);
             }
 
-            [Theory]
-            [InlineData(_ProductionEnvironmentName, false)]
-            [InlineData(_StagingEnvironmentName, true)]
-            [InlineData(_DevelopmentEnvironmentName, true)]
-            private void ShouldDisallowAccess(string environmentName, bool expected)
+            [Fact]
+            private void ShouldHaveCorrectSitemapUrl()
             {
-                var hostingEnvironment = new HostingEnvironment
-                {
-                    EnvironmentName = environmentName
-                };
-                var robotsFactory = new RobotsTxtFactory(hostingEnvironment, new HttpContextAccessor());
-
-                string robotsTxt = robotsFactory.Create();
-
-                robotsTxt.Contains("Disallow: /").Should().Be(expected);
-            }
-
-            [Theory]
-            [InlineData(_ProductionEnvironmentName, true)]
-            [InlineData(_StagingEnvironmentName, false)]
-            [InlineData(_DevelopmentEnvironmentName, false)]
-            private void ShouldIncludeSitemapUrl(string environmentName, bool expected)
-            {
-                var hostingEnvironment = new HostingEnvironment
-                {
-                    EnvironmentName = environmentName
-                };
                 var httpContextAccessor = new HttpContextAccessor
                 {
                     HttpContext = new DefaultHttpContext
@@ -70,11 +69,49 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                         }
                     }
                 };
-                var robotsFactory = new RobotsTxtFactory(hostingEnvironment, httpContextAccessor);
+                var robotsFactory = new RobotsTxtFactory(
+                    httpContextAccessor,
+                    CreateRobotsTxtOptions(true));
 
                 string robotsTxt = robotsFactory.Create();
 
-                robotsTxt.Contains("GetSitemap: https://example.com:5000/app-root/sitemap.xml").Should().Be(expected);
+                robotsTxt.Should().Contain("GetSitemap: https://example.com:5000/app-root/sitemap.xml");
+            }
+
+            [Theory]
+            [InlineData(false, false)]
+            [InlineData(true, true)]
+            private void ShouldIncludeSitemapUrl(bool addsiteMapUrl, bool expected)
+            {
+                var robotsFactory = new RobotsTxtFactory(
+                    new HttpContextAccessor(),
+                    CreateRobotsTxtOptions(addsiteMapUrl));
+
+                string robotsTxt = robotsFactory.Create();
+
+                robotsTxt.Contains("GetSitemap").Should().Be(expected);
+            }
+
+            [Fact]
+            private void ShouldNotAddAnyUserAgentRecordsIfEmpty()
+            {
+                var robotsFactory = new RobotsTxtFactory(
+                    new HttpContextAccessor(),
+                    CreateRobotsTxtOptions(false, new List<UserAgentRecord>()));
+
+                string robotsTxt = robotsFactory.Create();
+
+                robotsTxt.Should().NotContain("User-agent");
+            }
+
+            [Fact]
+            private void ShouldNotAddAnyUserAgentRecordsIfNull()
+            {
+                var robotsFactory = new RobotsTxtFactory(new HttpContextAccessor(), CreateRobotsTxtOptions(false));
+
+                string robotsTxt = robotsFactory.Create();
+
+                robotsTxt.Should().NotContain("User-agent");
             }
         }
     }

@@ -1,27 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <Target Name="GitVersionConfig" BeforeTargets="Build">
-    <Copy SourceFiles="..\..\gitversion.config\GitVersionConfig.yaml" DestinationFolder="..\.." />
-  </Target>
-  
-  <Target Name="Jenkins" Condition="'$(Configuration)' == 'Release'" DependsOnTargets="GitVersionConfig;Pack" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <CodeAnalysisAdditionalOptions>/additionalfile:../../stylecop.json</CodeAnalysisAdditionalOptions>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);SA1633;SA1413;SA1309;SA0001;SA1101</NoWarn>
-    <PackageId>Winton.AspNetCore.Seo</PackageId>
-    <Title>Winton ASP.NET Core SEO Library</Title>
-    <Description>ASP.NET Core Library for adding SEO to websites</Description>
-    <PackageVersion>$(NuGetVersion)</PackageVersion>
     <Authors>Winton</Authors>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2017 Winton</Copyright>
+    <Description>ASP.NET Core Library for adding SEO to websites</Description>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SA1101;SA1309;SA1413;SA1633;SA1652</NoWarn>
+    <PackageId>Winton.AspNetCore.Seo</PackageId>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, ASP.NET, Core, SEO</PackageTags>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <OutputType>Library</OutputType>
-    <OutputTypeEx>library</OutputTypeEx>
+    <PackageVersion>$(NuGetVersion)</PackageVersion>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://stash/scm/techbus/winton.aspnetcore.seo.git</RepositoryUrl>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Title>Winton ASP.NET Core SEO Library</Title>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   
   <ItemGroup>
@@ -29,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\stylecop.json" />
+    <AdditionalFiles Include="../../stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,8 +40,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="1.1.3" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.1.1" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" PrivateAssets="All" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
     <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
   </ItemGroup>
+
+  <Target Name="GitVersionConfig" BeforeTargets="WriteVersionInfoToBuildLog">
+    <Copy SourceFiles="..\..\gitversion.config\GitVersionConfig.yaml" DestinationFolder="..\.." />
+  </Target>
 
 </Project>

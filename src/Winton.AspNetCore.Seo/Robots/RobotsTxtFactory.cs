@@ -1,6 +1,6 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 using Flurl;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 
@@ -8,32 +8,37 @@ namespace Winton.AspNetCore.Seo.Robots
 {
     internal sealed class RobotsTxtFactory : IRobotsTxtFactory
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IRobotsTxtOptions _options;
 
-        public RobotsTxtFactory(IHostingEnvironment hostingEnvironment, IHttpContextAccessor httpContextAccessor)
+        public RobotsTxtFactory(IHttpContextAccessor httpContextAccessor, IRobotsTxtOptions options)
         {
-            _hostingEnvironment = hostingEnvironment;
             _httpContextAccessor = httpContextAccessor;
+            _options = options;
         }
 
         public string Create()
         {
-            StringBuilder stringBuilder = new StringBuilder()
-                .AppendLine("User-agent: *");
-
-            if (!_hostingEnvironment.IsProduction())
+            var stringBuilder = new StringBuilder();
+            foreach (UserAgentRecord userAgentRecord in _options.UserAgentRecords ??
+                                                          Enumerable.Empty<UserAgentRecord>())
             {
-                stringBuilder.AppendLine("Disallow: /");
+                stringBuilder.AppendLine(userAgentRecord.CreateRecord());
             }
-            else
+
+            if (_options.AddSitemapUrl)
             {
-                string baseUrl = _httpContextAccessor?.HttpContext?.Request?.GetEncodedUrl();
-                Url sitemapUrl = (baseUrl ?? string.Empty).Replace(Constants.RobotsUrl, Constants.SitemapUrl);
-                stringBuilder.AppendLine($"GetSitemap: {sitemapUrl}");
+                stringBuilder.AppendLine(AddSitemapUrl());
             }
 
             return stringBuilder.ToString();
+        }
+
+        private string AddSitemapUrl()
+        {
+            string baseUrl = _httpContextAccessor?.HttpContext?.Request?.GetEncodedUrl();
+            Url sitemapUrl = (baseUrl ?? string.Empty).Replace(Constants.RobotsUrl, Constants.SitemapUrl);
+            return $"GetSitemap: {sitemapUrl}";
         }
     }
 }
