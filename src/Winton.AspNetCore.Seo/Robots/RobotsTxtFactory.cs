@@ -28,17 +28,17 @@ namespace Winton.AspNetCore.Seo.Robots
 
             if (_options.AddSitemapUrl)
             {
-                AddSitemapUrl(stringBuilder);
+                stringBuilder.AppendLine(AddSitemapUrl());
             }
 
             return stringBuilder.ToString();
         }
 
-        private void AddSitemapUrl(StringBuilder stringBuilder)
+        private string AddSitemapUrl()
         {
             string baseUrl = _httpContextAccessor?.HttpContext?.Request?.GetEncodedUrl();
             Url sitemapUrl = (baseUrl ?? string.Empty).Replace(Constants.RobotsUrl, Constants.SitemapUrl);
-            stringBuilder.AppendLine($"GetSitemap: {sitemapUrl}");
+            return $"GetSitemap: {sitemapUrl}";
         }
     }
 }
