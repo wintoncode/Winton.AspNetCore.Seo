@@ -44,7 +44,7 @@
     <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
   </ItemGroup>
 
-  <Target Name="GitVersionConfig" BeforeTargets="Build">
+  <Target Name="GitVersionConfig" BeforeTargets="WriteVersionInfoToBuildLog">
     <Copy SourceFiles="..\..\gitversion.config\GitVersionConfig.yaml" DestinationFolder="..\.." />
   </Target>
 
