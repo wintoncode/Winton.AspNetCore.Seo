@@ -13,11 +13,6 @@ namespace Winton.AspNetCore.Seo.Robots
             _value = userAgent;
         }
 
-        public static bool operator ==(UserAgent left, UserAgent right)
-        {
-            return left.Equals(right);
-        }
-
         public static explicit operator string(UserAgent userAgent)
         {
             return userAgent._value;
@@ -36,6 +31,11 @@ namespace Winton.AspNetCore.Seo.Robots
         public static explicit operator UserAgent?(string userAgent)
         {
             return userAgent == null ? null as UserAgent? : new UserAgent(userAgent);
+        }
+
+        public static bool operator ==(UserAgent left, UserAgent right)
+        {
+            return left.Equals(right);
         }
 
         public static bool operator !=(UserAgent left, UserAgent right)
