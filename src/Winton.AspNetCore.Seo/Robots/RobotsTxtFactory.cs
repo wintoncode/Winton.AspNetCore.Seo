@@ -21,7 +21,7 @@ namespace Winton.AspNetCore.Seo.Robots
         {
             var stringBuilder = new StringBuilder();
             foreach (UserAgentRecord userAgentRecord in _options.UserAgentRecords ??
-                                                          Enumerable.Empty<UserAgentRecord>())
+                                                        Enumerable.Empty<UserAgentRecord>())
             {
                 stringBuilder.AppendLine(userAgentRecord.CreateRecord());
             }
