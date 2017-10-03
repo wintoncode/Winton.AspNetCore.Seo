@@ -44,7 +44,7 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                 };
                 var defaultRobotsTxtOptions = new DefaultRobotsTxtOptions(hostingEnvironment);
 
-                var userAgentRecord = defaultRobotsTxtOptions.UserAgentRecords.Single();
+                UserAgentRecord userAgentRecord = defaultRobotsTxtOptions.UserAgentRecords.Single();
 
                 userAgentRecord.DisallowAll.Should().Be(expected);
             }
