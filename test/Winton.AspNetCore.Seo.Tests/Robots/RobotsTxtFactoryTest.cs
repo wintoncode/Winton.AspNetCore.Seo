@@ -10,7 +10,7 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
 {
     public class RobotsTxtFactoryTest
     {
-        private IRobotsTxtOptions CreateRobotsTxtOptions(
+        private static IRobotsTxtOptions CreateRobotsTxtOptions(
             bool addSitemapUrl,
             IEnumerable<UserAgentRecord> userAgentRecords = null)
         {
@@ -25,21 +25,20 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
             [Fact]
             private void ShouldAddAllUserAgentRecords()
             {
+                var userAgentRecords = new List<UserAgentRecord>
+                {
+                    new UserAgentRecord
+                    {
+                        UserAgent = (UserAgent)"Google"
+                    },
+                    new UserAgentRecord
+                    {
+                        UserAgent = (UserAgent)"Bing"
+                    }
+                };
                 var robotsFactory = new RobotsTxtFactory(
                     new HttpContextAccessor(),
-                    CreateRobotsTxtOptions(
-                        false,
-                        new List<UserAgentRecord>
-                        {
-                            new UserAgentRecord
-                            {
-                                UserAgent = (UserAgent)"Google"
-                            },
-                            new UserAgentRecord
-                            {
-                                UserAgent = (UserAgent)"Bing"
-                            }
-                        }));
+                    CreateRobotsTxtOptions(false, userAgentRecords));
 
                 string robotsTxt = robotsFactory.Create();
 

@@ -12,7 +12,7 @@ node {
 		}
 
 		stage("Build") {
-			bat("\"${tool 'MSBuild15'}\" /p:Configuration=Release")
+			bat("\"${tool 'MSBuild15'}\" /p:Configuration=Release /p:GetVersion=True /p:WriteVersionInfoToBuildLog=True")
 		}
 
 		stage("Test") {
