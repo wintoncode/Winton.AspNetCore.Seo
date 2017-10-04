@@ -14,7 +14,7 @@ namespace Winton.AspNetCore.Seo.Extensions
         /// <summary>
         ///     Maps the routes in MVC used to serve SEO files, such as /robots.txt and /sitemap.xml.
         /// </summary>
-        /// <param name="routeBuilder">The <see cref="IRouteBuilder" /> too add the routes to.</param>
+        /// <param name="routeBuilder">The <see cref="IRouteBuilder" /> to add the routes to.</param>
         /// <returns>The instance of the <see cref="IRouteBuilder" /> that was passed in.</returns>
         public static IRouteBuilder MapSeoRoutes(this IRouteBuilder routeBuilder)
         {
