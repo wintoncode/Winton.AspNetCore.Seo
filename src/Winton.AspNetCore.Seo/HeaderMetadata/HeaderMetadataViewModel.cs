@@ -4,22 +4,22 @@
 namespace Winton.AspNetCore.Seo.HeaderMetadata
 {
     /// <summary>
-    /// The view model used for the header metadata.
+    ///     The view model used for the header metadata.
     /// </summary>
     public sealed class HeaderMetadataViewModel
     {
         /// <summary>
-        /// Gets or sets the description of the website.
+        ///     Gets or sets the description of the website.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the image to use for the website when it is shared.
+        ///     Gets or sets the image to use for the website when it is shared.
         /// </summary>
         public string Image { get; set; }
 
         /// <summary>
-        /// Gets or sets the title for the website.
+        ///     Gets or sets the title for the website.
         /// </summary>
         public string Title { get; set; }
     }

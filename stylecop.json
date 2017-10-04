@@ -4,7 +4,8 @@
   "settings": {
     "documentationRules": {
       "companyName": "Winton",
-      "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.",
+      "copyrightText":
+        "Copyright (c) {companyName}. All rights reserved.\nLicensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.",
       "documentInternalElements": false,
       "xmlHeader": false
     },

@@ -8,22 +8,23 @@ using System.Text;
 namespace Winton.AspNetCore.Seo.Robots
 {
     /// <summary>
-    /// Class representing a user agent record in a robots.txt file.
+    ///     Class representing a user agent record in a robots.txt file.
     /// </summary>
     public sealed class UserAgentRecord
     {
         /// <summary>
-        /// Gets or sets the urls to disallow for this <see cref="UserAgent"/>.
+        ///     Gets or sets the urls to disallow for this <see cref="UserAgent" />.
         /// </summary>
         public IEnumerable<string> Disallow { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether all URLs should be disallowed for this <see cref="UserAgent"/>.
+        ///     Gets or sets a value indicating whether all URLs should be disallowed for this <see cref="UserAgent" />.
         /// </summary>
         public bool DisallowAll { get; set; }
 
         /// <summary>
-        /// Gets or sets a the <see cref="UserAgent"/> for which the record applies to. Defaults to <code>UserAgent.Any</code>.
+        ///     Gets or sets a the <see cref="UserAgent" /> for which the record applies to. Defaults to <code>UserAgent.Any</code>
+        ///     .
         /// </summary>
         public UserAgent UserAgent { get; set; } = UserAgent.Any;
 
