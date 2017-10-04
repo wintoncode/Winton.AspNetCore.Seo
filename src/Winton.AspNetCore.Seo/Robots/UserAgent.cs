@@ -6,7 +6,7 @@ using System;
 namespace Winton.AspNetCore.Seo.Robots
 {
     /// <summary>
-    ///     A value type used to define a User Agent. Acts as a wrapper around a string.
+    ///     A value type used to define a user agent. Acts as a wrapper around a string.
     /// </summary>
     public struct UserAgent : IEquatable<UserAgent>
     {
@@ -58,7 +58,7 @@ namespace Winton.AspNetCore.Seo.Robots
             return userAgent == null ? null as UserAgent? : new UserAgent(userAgent);
         }
 
-        /// <summary>Equality operator for two <see cref="UserAgent" />.</summary>
+        /// <summary>Equality operator for two <see cref="UserAgent" />s.</summary>
         /// <param name="left">The left-hand side of the operator.</param>
         /// <param name="right">The right-hand side of the operator.</param>
         /// <returns>True if the <paramref name="left" /> is equal to the <paramref name="right" />; otherwise, false.</returns>
@@ -67,7 +67,7 @@ namespace Winton.AspNetCore.Seo.Robots
             return left.Equals(right);
         }
 
-        /// <summary>Inequality operator for two <see cref="UserAgent" />.</summary>
+        /// <summary>Inequality operator for two <see cref="UserAgent" />s.</summary>
         /// <param name="left">The left-hand side of the operator.</param>
         /// <param name="right">The right-hand side of the operator.</param>
         /// <returns>True if the <paramref name="left" /> is not equal to the <paramref name="right" />; otherwise, false.</returns>

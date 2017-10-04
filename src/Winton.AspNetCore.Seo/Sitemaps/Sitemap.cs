@@ -7,15 +7,15 @@ using System.Runtime.Serialization;
 namespace Winton.AspNetCore.Seo.Sitemaps
 {
     /// <summary>
-    ///     Class that defines the data in the a sitemap. Has the <see cref="CollectionDataContractAttribute" /> for
-    ///     serialisation.
+    ///     A class that defines the data in a sitemap. It has the <see cref="CollectionDataContractAttribute" /> for
+    ///     serialization.
     /// </summary>
     [CollectionDataContract(Name = "urlset", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
     public sealed class Sitemap : List<SitemapUrl>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sitemap" /> class.
-        ///     Default constructor used in serialisation.
+        ///     Default constructor used in serialization.
         /// </summary>
         public Sitemap()
         {
@@ -24,7 +24,7 @@ namespace Winton.AspNetCore.Seo.Sitemaps
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sitemap" /> class from an <see cref="IEnumerable{SitemapUrl}" />.
         /// </summary>
-        /// <param name="sitemapUrls">The URLs to create the sitemap from.</param>
+        /// <param name="sitemapUrls">The URLs from which the sitemap is created.</param>
         public Sitemap(IEnumerable<SitemapUrl> sitemapUrls)
             : base(sitemapUrls)
         {

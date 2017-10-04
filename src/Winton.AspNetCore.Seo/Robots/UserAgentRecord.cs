@@ -13,7 +13,7 @@ namespace Winton.AspNetCore.Seo.Robots
     public sealed class UserAgentRecord
     {
         /// <summary>
-        ///     Gets or sets the urls to disallow for this <see cref="UserAgent" />.
+        ///     Gets or sets the URLs to disallow for this <see cref="UserAgent" />.
         /// </summary>
         public IEnumerable<string> Disallow { get; set; }
 
@@ -23,8 +23,7 @@ namespace Winton.AspNetCore.Seo.Robots
         public bool DisallowAll { get; set; }
 
         /// <summary>
-        ///     Gets or sets a the <see cref="UserAgent" /> for which the record applies to. Defaults to <code>UserAgent.Any</code>
-        ///     .
+        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies to. Defaults to <code>UserAgent.Any</code>.
         /// </summary>
         public UserAgent UserAgent { get; set; } = UserAgent.Any;
 

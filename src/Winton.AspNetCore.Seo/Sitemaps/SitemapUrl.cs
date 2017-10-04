@@ -7,11 +7,9 @@ namespace Winton.AspNetCore.Seo.Sitemaps
 {
     /// <summary>
     ///     This class represents a single URL in a sitemap. Annotated with <see cref="DataContractAttribute" /> to enable
-    ///     serialisation.
+    ///     serialization.
+    ///     See the <a href="https://www.sitemaps.org">sitemaps.org</a> site for more information about this format.
     /// </summary>
-    /// <remarks>
-    ///     For more information about this format see https://www.sitemaps.org.
-    /// </remarks>
     [DataContract(Name = "url", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
     [KnownType(typeof(SitemapUrl))]
     public sealed class SitemapUrl

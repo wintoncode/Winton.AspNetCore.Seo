@@ -9,7 +9,7 @@ using Winton.AspNetCore.Seo.Sitemaps;
 namespace Winton.AspNetCore.Seo
 {
     /// <summary>
-    ///     ASP.Net Core <see cref="Controller" /> for exposing endpoints for SEO documents, such as robots.txt and
+    ///     ASP.NET Core <see cref="Controller" /> for exposing endpoints for SEO documents, such as robots.txt and
     ///     sitemap.xml.
     /// </summary>
     public sealed class SeoController : Controller
@@ -40,7 +40,7 @@ namespace Winton.AspNetCore.Seo
         /// <summary>
         ///     An endpoint that returns the sitemap.xml file.
         /// </summary>
-        /// <returns>An <see cref="ObjectResult" /> that is deserialised as XML to return the sitemap.xml file.</returns>
+        /// <returns>An <see cref="ObjectResult" /> that is deserialized as XML to return the sitemap.xml file.</returns>
         [Produces("text/xml")]
         public IActionResult GetSitemap()
         {
