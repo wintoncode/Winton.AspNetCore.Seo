@@ -22,7 +22,7 @@ namespace Winton.AspNetCore.Seo.Extensions
         ///     configures all other required services using defaults if they have not already been added to the
         ///     <see cref="IServiceCollection" />.
         /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection" /> to add the services to.</param>
+        /// <param name="services">The <see cref="IServiceCollection" /> to which the services should be added.</param>
         /// <param name="sitemapConfig">The <see cref="ISitemapConfig" /> to use.</param>
         /// <returns>The <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IServiceCollection AddSeo(this IServiceCollection services, ISitemapConfig sitemapConfig)
@@ -37,7 +37,7 @@ namespace Winton.AspNetCore.Seo.Extensions
         ///     they have not already been added to the <see cref="IServiceCollection" />.
         /// </summary>
         /// <typeparam name="TSitemapConfig">The type to register as the implementation of <see cref="ISitemapConfig" />.</typeparam>
-        /// <param name="services">The <see cref="IServiceCollection" /> to add the services to.</param>
+        /// <param name="services">The <see cref="IServiceCollection" /> to which the services should be added.</param>
         /// <returns>The <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IServiceCollection AddSeo<TSitemapConfig>(this IServiceCollection services)
             where TSitemapConfig : class, ISitemapConfig
