@@ -23,7 +23,7 @@ namespace Winton.AspNetCore.Seo.Robots
         public bool DisallowAll { get; set; }
 
         /// <summary>
-        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies to. Defaults to <code>UserAgent.Any</code>.
+        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <code>UserAgent.Any</code>.
         /// </summary>
         public UserAgent UserAgent { get; set; } = UserAgent.Any;
 
