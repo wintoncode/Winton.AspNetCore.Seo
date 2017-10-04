@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 namespace Winton.AspNetCore.Seo.Robots
 {
     /// <summary>
-    ///     A default implementation of <see cref="IRobotsTxtOptions" /> that always shows the sitemap and only allows robots
+    ///     A default implementation of <see cref="IRobotsTxtOptions" /> that always shows the sitemap and allows robots only
     ///     in the production environment.
     /// </summary>
     internal sealed class DefaultRobotsTxtOptions : IRobotsTxtOptions
