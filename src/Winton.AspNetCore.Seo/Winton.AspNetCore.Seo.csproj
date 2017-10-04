@@ -4,12 +4,12 @@
     <Authors>Winton</Authors>
     <Copyright>Copyright 2017 Winton</Copyright>
     <Description>ASP.NET Core Library for adding SEO to websites</Description>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GetVersion>False</GetVersion>
-    <NoWarn>$(NoWarn);SA1101;SA1309;SA1413;SA1633;SA1652</NoWarn>
+    <NoWarn>$(NoWarn);SA1101;SA1309;SA1413</NoWarn>
     <PackageId>Winton.AspNetCore.Seo</PackageId>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-    <PackageTags>Winton, ASP.NET, Core, SEO</PackageTags>
+    <PackageTags>Winton, ASP.NET, Core, SEO, Search, Engine</PackageTags>
     <PackageVersion>$(NuGetVersion)</PackageVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://stash/scm/techbus/winton.aspnetcore.seo.git</RepositoryUrl>
