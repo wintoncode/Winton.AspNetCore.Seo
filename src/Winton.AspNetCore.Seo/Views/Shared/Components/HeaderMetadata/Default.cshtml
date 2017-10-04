@@ -4,15 +4,15 @@
 
 @if (!Environment.IsProduction())
 {
-    <meta name="robots" content="none" />
+    <meta name="robots" content="none"/>
 }
-<meta property="og:type" content="website" />
-<meta property="og:title" content="@Model.Title" />
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="@Model.Title"/>
 @if (!string.IsNullOrWhiteSpace(Model.Description))
 {
-    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:description" content="@Model.Description"/>
 }
 @if (!string.IsNullOrWhiteSpace(Model.Image))
 {
-    <meta property="og:image" content="@Model.Image" />
+    <meta property="og:image" content="@Model.Image"/>
 }
