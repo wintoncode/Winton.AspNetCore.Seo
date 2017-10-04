@@ -10,12 +10,12 @@ It adds a default robots.txt and sitemap.xml to the web app.
     Install-Package Winton.AspNetCore.Seo
     ```
 
-2. Add services. For instance in `Startup.cs`
+2. Add services. For instance in `Startup.cs`:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        // Define the urls you want to show in the sitemap.xml
+        // Define the URLs you want to show in the sitemap.xml
         var sitemapConfig = new SitemapConfig 
         {
             new SitemapConfigUrl

@@ -1,15 +1,30 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) Winton. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Winton.AspNetCore.Seo.Robots
 {
+    /// <summary>
+    ///     Class representing a user agent record in a robots.txt file.
+    /// </summary>
     public sealed class UserAgentRecord
     {
+        /// <summary>
+        ///     Gets or sets the URLs to disallow for this <see cref="UserAgent" />.
+        /// </summary>
         public IEnumerable<string> Disallow { get; set; }
 
+        /// <summary>
+        ///     Gets or sets a value indicating whether all URLs should be disallowed for this <see cref="UserAgent" />.
+        /// </summary>
         public bool DisallowAll { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <code>UserAgent.Any</code>.
+        /// </summary>
         public UserAgent UserAgent { get; set; } = UserAgent.Any;
 
         internal string CreateRecord()
