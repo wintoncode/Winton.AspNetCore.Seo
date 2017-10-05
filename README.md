@@ -88,11 +88,11 @@ To provide your own implementation you can do the following:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
-    {
-        // Register your implementation of IRobotsTxtOptions first
-        services.AddSingleton<IRobotsTxtOptions, YourRobotsTxtOptions>();
-        services.AddSeo(sitemapConfig);
-    }
+{
+    // Register your implementation of IRobotsTxtOptions first
+    services.AddSingleton<IRobotsTxtOptions, YourRobotsTxtOptions>();
+    services.AddSeo(sitemapConfig);
+}
 ```
 
 The `IRobotsTxtOptions` interface has the following properties:
