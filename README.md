@@ -3,8 +3,8 @@
 ## What Does It Do?
 It makes it easy to add search engine metadata to your ASP.NET Core website, allowing you to focus on writing the code you want to write. It provides three things:
 
-* robots.txt file,
-* sitemap.xml file, and
+* a robots.txt file,
+* a sitemap.xml file, and
 * HTML `<meta>` tags
 
 You no longer have to look up the format of each of these separate protocols, or pollute your HTML with tons of `<meta>` tags.
