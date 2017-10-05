@@ -1,3 +1,0 @@
-[submodule "gitversion.config"]
-	path = gitversion.config
-	url = https://stash/scm/techdo/gitversion.config.git
