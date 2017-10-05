@@ -9,7 +9,7 @@ It makes it easy to add search engine metadata to your ASP.NET Core website, all
 
 You no longer have to look up the format of each of these separate protocols, or pollute your HTML with tons of `<meta>` tags.
 
-It also gives you the flexibility to define the behaviour of how these files are generated at runtime. This is useful because it means you can do things such as inform search engine bots not to crawl your development and staging sites, but allow them to index the production version; without having to write and maintain three separate files.
+It also gives you the flexibility to define the behaviour of how these files are generated at runtime. This is useful because it means you can do things such as inform search engine bots not to crawl your development and staging sites, but allow them to index the production version, without having to write and maintain three separate files.
 
 ## How Do I Use It?
 ### Installation
