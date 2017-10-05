@@ -79,7 +79,7 @@ In order to define your sitemap the `ISitemapConfig` interface needs to be imple
 The output of the robots.txt is controlled by the implementation of the `IRobotsTxtOptions` interface. When `AddSeo` is called a default implementation of this interface will be used, unless one has already been registered beforehand. The default options apply the following policy:
 
 * The URL of the sitemap is specified in all environments.
-* In the production environment all user agents are allowed to indexing any part of the site.
+* In the production environment all user agents are allowed to index any part of the site.
 * In all other environments, all user agents are disallowed from indexing any part of the site.
 
 *Note: It's always worth remembering that malicious bots can just ignore a robots.txt file, so it should not be relied on to hide any sensitive parts of the site.*
@@ -97,7 +97,7 @@ public void ConfigureServices(IServiceCollection services)
 
 The `IRobotsTxtOptions` interface has the following properties:
 
-* `AddSitemapUrl` - Determines whether the url to the sitemap should be included in the robots.txt file
+* `AddSitemapUrl` - Determines whether the URL to the sitemap should be included in the robots.txt file
 * `UserAgentRecords` - A collection of user agent records. Use this define the parts of the site that you want each particular robot to ignore. You can define a record using the wildcard user agent to apply the same rules to all robots by using `UserAgent.Any`.
 
 ### Defining the HTML header metadata
