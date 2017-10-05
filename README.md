@@ -108,4 +108,4 @@ Start up your website and you should be able to see the files at the following U
 * /robots.txt
 * /sitemap.xml
 
-There should also be several `<meta>` tags in the HTML pages of your site that you have added the header metadata to.
+There should also be several `<meta>` tags in the HTML pages of your site.
