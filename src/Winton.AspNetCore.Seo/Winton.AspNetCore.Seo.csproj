@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>Winton</Authors>
     <Copyright>Copyright 2017 Winton</Copyright>
-    <Description>ASP.NET Core Library for adding SEO to websites</Description>
+    <Description>ASP.NET Core Library for adding SEO metadata to websites</Description>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GetVersion>False</GetVersion>
     <NoWarn>$(NoWarn);SA1101;SA1309;SA1413</NoWarn>
@@ -12,7 +12,7 @@
     <PackageTags>Winton, ASP.NET, Core, SEO, Search, Engine, Optimization</PackageTags>
     <PackageVersion>$(NuGetVersion)</PackageVersion>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://stash/scm/techbus/winton.aspnetcore.seo.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/wintoncode/Winton.AspNetCore.Seo</RepositoryUrl>
     <TargetFramework>netstandard1.6</TargetFramework>
     <Title>Winton ASP.NET Core SEO Library</Title>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bt.Tooling.ReSharper" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="Flurl" Version="2.5.0" />
     <PackageReference Include="GitVersionTask" Version="4.0.0-beta0011" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="1.1.4" />

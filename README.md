@@ -1,5 +1,10 @@
 # Winton.AspNetCore.Seo
 
+[![Build status](https://ci.appveyor.com/api/projects/status/722rlfhiy67qcwxb/branch/master?svg=true)](https://ci.appveyor.com/project/wintoncode/winton-aspnetcore-seo/branch/master)
+[![Travis Build Status](https://travis-ci.org/wintoncode/Winton.AspNetCore.Seo.svg?branch=master)](https://travis-ci.org/wintoncode/Winton.AspNetCore.Seo)
+[![NuGet version](https://img.shields.io/nuget/v/Winton.AspNetCore.Seo.svg)](https://www.nuget.org/packages/Winton.AspNetCore.Seo)
+[![NuGet version](https://img.shields.io/nuget/vpre/Winton.AspNetCore.Seo.svg)](https://www.nuget.org/packages/Winton.AspNetCore.Seo)
+
 ## What Does It Do?
 It makes it easy to add search engine metadata to your ASP.NET Core website, allowing you to focus on writing the code you want to write. It provides three things:
 
