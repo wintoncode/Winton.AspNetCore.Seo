@@ -1,11 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2509E76A-0210-4FB6-A0FA-7E992D266786}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.travis.yml = .travis.yml
+		appveyor.yml = appveyor.yml
 		icon.jpg = icon.jpg
 		LICENSE = LICENSE
 		README.md = README.md
@@ -19,6 +21,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winton.AspNetCore.Seo", "src\Winton.AspNetCore.Seo\Winton.AspNetCore.Seo.csproj", "{AFD7B9E8-83D5-480E-B7A5-3A5B89228845}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winton.AspNetCore.Seo.Tests", "test\Winton.AspNetCore.Seo.Tests\Winton.AspNetCore.Seo.Tests.csproj", "{FEF7A97C-DC75-4B87-A53F-6990F7DDB775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winton.AspNetCore.Seo.IntegrationTests", "test\Winton.AspNetCore.Seo.IntegrationTests\Winton.AspNetCore.Seo.IntegrationTests.csproj", "{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +38,10 @@ Global
 		{FEF7A97C-DC75-4B87-A53F-6990F7DDB775}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEF7A97C-DC75-4B87-A53F-6990F7DDB775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEF7A97C-DC75-4B87-A53F-6990F7DDB775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AFD7B9E8-83D5-480E-B7A5-3A5B89228845} = {531B7C9B-C476-400B-895F-97D76BB93BDB}
 		{FEF7A97C-DC75-4B87-A53F-6990F7DDB775} = {BFC44C4D-8443-453F-A395-FF656629171E}
+		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02} = {BFC44C4D-8443-453F-A395-FF656629171E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {049F42AA-6AD9-4BCA-849A-24581CD1DF40}
