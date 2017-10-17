@@ -2,12 +2,16 @@
   
   <PropertyGroup>
     <Authors>Winton</Authors>
+    <Company>Winton</Company>
     <Copyright>Copyright 2017 Winton</Copyright>
     <Description>ASP.NET Core Library for adding SEO metadata to websites</Description>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GetVersion>False</GetVersion>
     <NoWarn>$(NoWarn);SA1101;SA1309;SA1413</NoWarn>
     <PackageId>Winton.AspNetCore.Seo</PackageId>
+    <PackageIconUrl>https://raw.githubusercontent.com/wintoncode/Winton.AspNetCore.Seo/master/icon.jpg</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/wintoncode/Winton.AspNetCore.Seo/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/wintoncode/Winton.AspNetCore.Seo</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, ASP.NET, Core, SEO, Search, Engine, Optimization</PackageTags>
     <PackageVersion>$(NuGetVersion)</PackageVersion>
