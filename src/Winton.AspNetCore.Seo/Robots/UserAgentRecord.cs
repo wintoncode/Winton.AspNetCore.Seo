@@ -23,11 +23,20 @@ namespace Winton.AspNetCore.Seo.Robots
         public bool DisallowAll { get; set; }
 
         /// <summary>
+        ///     Gets or sets the URLs that should not be indexed by this <see cref="UserAgent" />.
+        /// </summary>
+        public IEnumerable<string> NoIndex { get; set; }
+
+        /// <summary>
         ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <code>UserAgent.Any</code>.
         /// </summary>
         public UserAgent UserAgent { get; set; } = UserAgent.Any;
 
-        internal string CreateRecord()
+        /// <summary>
+        ///     Creates a string representation of the <see cref="UserAgentRecord" />.
+        /// </summary>
+        /// <returns>The string.</returns>
+        public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder()
                 .AppendLine($"User-agent: {UserAgent}");
@@ -39,6 +48,11 @@ namespace Winton.AspNetCore.Seo.Robots
             foreach (string url in disallowedUrls)
             {
                 stringBuilder.AppendLine($"Disallow: {url}");
+            }
+
+            foreach (string url in NoIndex ?? Enumerable.Empty<string>())
+            {
+                stringBuilder.AppendLine($"Noindex: {url}");
             }
 
             return stringBuilder.ToString();

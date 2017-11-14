@@ -7,17 +7,16 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
 {
     public class UserAgentRecordTest
     {
-        public sealed class CreateRecord : UserAgentRecordTest
+        public new sealed class ToString : UserAgentRecordTest
         {
             [Fact]
             private void ShouldAllowAllRoutesIfDisallowNotSet()
             {
                 var userAgentRecord = new UserAgentRecord();
 
-                string section = userAgentRecord.CreateRecord();
+                string record = userAgentRecord.ToString();
 
-                section.Should().Contain("Disallow:");
-                section.Should().NotContain("Disallow: /");
+                record.Should().Contain("Disallow:").And.NotContain("Disallow: /");
             }
 
             [Fact]
@@ -29,9 +28,9 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                     Disallow = new List<string> { "/test" }
                 };
 
-                string section = userAgentRecord.CreateRecord();
+                string record = userAgentRecord.ToString();
 
-                section.Should().Contain("Disallow: /");
+                record.Should().Contain("Disallow: /");
             }
 
             [Fact]
@@ -42,10 +41,9 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                     Disallow = new List<string> { "/test", "/foo" }
                 };
 
-                string section = userAgentRecord.CreateRecord();
+                string record = userAgentRecord.ToString();
 
-                section.Should().Contain("Disallow: /test");
-                section.Should().Contain("Disallow: /foo");
+                record.Should().Contain("Disallow: /test").And.Contain("Disallow: /foo");
             }
 
             [Theory]
@@ -58,9 +56,22 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                     UserAgent = (UserAgent)userAgent
                 };
 
-                string section = userAgentRecord.CreateRecord();
+                string record = userAgentRecord.ToString();
 
-                section.Should().Contain($"User-agent: {userAgent}");
+                record.Should().Contain($"User-agent: {userAgent}");
+            }
+
+            [Fact]
+            private void ShouldContainNoindexDirectiveIfDefinedForUrl()
+            {
+                var userAgentRecord = new UserAgentRecord
+                {
+                    NoIndex = new List<string> { "/test", "/foo" }
+                };
+
+                string record = userAgentRecord.ToString();
+
+                record.Should().Contain("Noindex: /test").And.Contain("Noindex: /foo");
             }
         }
 
