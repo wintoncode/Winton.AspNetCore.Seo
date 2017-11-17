@@ -23,7 +23,7 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
         public sealed class Create : RobotsTxtFactoryTest
         {
             [Fact]
-            private void ShouldAddAllUserAgentRecords()
+            private void ShouldAddAllUserAgentRecordsSeperatedByABlankLine()
             {
                 var userAgentRecords = new List<UserAgentRecord>
                 {

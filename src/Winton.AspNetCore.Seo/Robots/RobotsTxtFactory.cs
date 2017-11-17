@@ -26,18 +26,18 @@ namespace Winton.AspNetCore.Seo.Robots
             foreach (UserAgentRecord userAgentRecord in _options.UserAgentRecords ??
                                                         Enumerable.Empty<UserAgentRecord>())
             {
-                stringBuilder.AppendLine(userAgentRecord.CreateRecord());
+                stringBuilder.AppendLine(userAgentRecord.ToString());
             }
 
             if (_options.AddSitemapUrl)
             {
-                stringBuilder.AppendLine(AddSitemapUrl());
+                stringBuilder.AppendLine(CreateSitemapUrl());
             }
 
             return stringBuilder.ToString();
         }
 
-        private string AddSitemapUrl()
+        private string CreateSitemapUrl()
         {
             string baseUrl = _httpContextAccessor?.HttpContext?.Request?.GetEncodedUrl();
             Url sitemapUrl = (baseUrl ?? string.Empty).Replace(Constants.RobotsUrl, Constants.SitemapUrl);
