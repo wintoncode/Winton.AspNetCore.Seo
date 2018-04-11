@@ -4,9 +4,10 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Winton.AspNetCore.Seo.HeaderMetadata;
+using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
 using Winton.AspNetCore.Seo.Robots;
 using Winton.AspNetCore.Seo.Sitemaps;
 
@@ -59,7 +60,8 @@ namespace Winton.AspNetCore.Seo.Extensions
             services.TryAddSingleton<IRobotsTxtOptions, DefaultRobotsTxtOptions>();
             services.TryAddTransient<IRobotsTxtFactory, RobotsTxtFactory>();
             services.TryAddSingleton<ISitemapFactory, SitemapFactory>();
-            return services.AddHeaderMetadata();
+            services.AddSingleton<ITagHelperComponent, OpenGraphNamespaceTagHelperComponent>();
+            return services;
         }
     }
 }
