@@ -9,11 +9,11 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
     /// <summary>
     ///     An Open Graph tag helper for article type pages.
     /// </summary>
-    [OpenGraphNamespaceAttribute("article", "http://ogp.me/ns/article#")]
+    [OpenGraphNamespace("article", "http://ogp.me/ns/article#")]
     public sealed class OpenGraphArticleTagHelper : OpenGraphTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphArticleTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphArticleTagHelper" /> class.
         /// </summary>
         public OpenGraphArticleTagHelper()
             : base("article")

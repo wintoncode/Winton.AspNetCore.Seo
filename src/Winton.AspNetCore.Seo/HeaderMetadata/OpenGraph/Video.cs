@@ -1,17 +1,16 @@
 // Copyright (c) Winton. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-using System.Collections.Generic;
-
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     A video as defined by Open Graph.
     /// </summary>
     public sealed class Video : Media
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Video"/> class.
+        ///     Initializes a new instance of the <see cref="Video" /> class.
         /// </summary>
         /// <param name="url">The url of the media Open Graph object.</param>
         public Video(string url)

@@ -12,7 +12,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
     public sealed class Locale
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Locale"/> class.
+        ///     Initializes a new instance of the <see cref="Locale" /> class.
         /// </summary>
         /// <param name="primary">The primary locale.</param>
         public Locale(string primary)

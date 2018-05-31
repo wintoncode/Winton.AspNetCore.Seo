@@ -12,7 +12,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
     public sealed class OpenGraphMusicAlbumTagHelper : OpenGraphMusicTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphMusicAlbumTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphMusicAlbumTagHelper" /> class.
         /// </summary>
         public OpenGraphMusicAlbumTagHelper()
             : base("album")

@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -39,7 +40,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                 case DateTime dateTime:
                     return new List<MetaTag> { new MetaTag(FullName, dateTime.ToString("o")) };
                 case IConvertible convertible:
-                    return new List<MetaTag> { new MetaTag(FullName, Convert.ToString(convertible)) };
+                    return new List<MetaTag> { new MetaTag(FullName, Convert.ToString(convertible, CultureInfo.InvariantCulture)) };
                 case IEnumerable<object> enumerable:
                     return enumerable.SelectMany(x => new OpenGraphProperty(FullName, IsPrimary, x).ToMetaTags());
                 default:

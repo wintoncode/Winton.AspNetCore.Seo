@@ -6,17 +6,18 @@ using System.Collections.Generic;
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for book type pages.
     ///     This object type represents a book or publication.
     ///     This is an appropriate type for ebooks, as well as traditional paperback or hardback books.
     ///     Do not use this type to represent magazines
     /// </summary>
-    [OpenGraphNamespaceAttribute("book", "http://ogp.me/ns/book#")]
+    [OpenGraphNamespace("book", "http://ogp.me/ns/book#")]
     public sealed class OpenGraphBookTagHelper : OpenGraphTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphBookTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphBookTagHelper" /> class.
         /// </summary>
         public OpenGraphBookTagHelper()
             : base("book")

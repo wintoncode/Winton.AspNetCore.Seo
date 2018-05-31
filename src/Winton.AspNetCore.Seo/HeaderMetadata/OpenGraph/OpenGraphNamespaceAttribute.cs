@@ -5,11 +5,12 @@ using System;
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An attibute that can be appled to a class representing an Open Graph object to specify the namespace
     ///     that should be used when serializing to meta tags.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class)]
     public sealed class OpenGraphNamespaceAttribute : Attribute
     {
         /// <summary>

@@ -6,14 +6,15 @@ using System.Collections.Generic;
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for video types.
     /// </summary>
-    [OpenGraphNamespaceAttribute("video", "http://ogp.me/ns/video#")]
+    [OpenGraphNamespace("video", "http://ogp.me/ns/video#")]
     public abstract class OpenGraphVideoTagHelper : OpenGraphTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphVideoTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphVideoTagHelper" /> class.
         /// </summary>
         /// <param name="subtype">The subtype of Open Graph video object.</param>
         protected OpenGraphVideoTagHelper(string subtype)

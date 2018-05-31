@@ -1,8 +1,6 @@
 // Copyright (c) Winton. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-using System.Collections.Generic;
-
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
 {
     /// <summary>
@@ -11,7 +9,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
     public sealed class Album
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Album"/> class.
+        ///     Initializes a new instance of the <see cref="Album" /> class.
         /// </summary>
         /// <param name="url">The url of another Open Graph object with og:type music.album.</param>
         public Album(string url)

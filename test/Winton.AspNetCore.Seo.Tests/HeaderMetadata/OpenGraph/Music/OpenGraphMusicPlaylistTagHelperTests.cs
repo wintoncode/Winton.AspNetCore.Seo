@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
@@ -12,8 +11,11 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
     {
         public sealed class Process : OpenGraphMusicPlaylistTagHelperTests
         {
-            private static readonly MetaTag _TypeMetaTag = new MetaTag("og:type", "music.playlist");
-            private static readonly MetaTag _NamespaceMetaTag = new MetaTag("OpenGraphNamespaceTagHelperComponent", "music: http://ogp.me/ns/music# og: http://ogp.me/ns#");
+            private static readonly MetaTag NamespaceMetaTag = new MetaTag(
+                "OpenGraphNamespaceTagHelperComponent",
+                "music: http://ogp.me/ns/music# og: http://ogp.me/ns#");
+
+            private static readonly MetaTag TypeMetaTag = new MetaTag("og:type", "music.playlist");
 
             public static IEnumerable<object[]> TestCases => new List<object[]>
             {
@@ -22,8 +24,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     new OpenGraphMusicPlaylistTagHelper(),
                     new List<MetaTag>
                     {
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -32,8 +34,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     new List<MetaTag>
                     {
                         new MetaTag("music:creator", "https://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -44,10 +46,10 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     },
                     new List<MetaTag>
                     {
-                        new MetaTag("music:song", "http://example.com"),
                         new MetaTag("music:song_count", "1"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        new MetaTag("music:song", "http://example.com"),
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -58,11 +60,11 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     },
                     new List<MetaTag>
                     {
+                        new MetaTag("music:song_count", "1"),
                         new MetaTag("music:song", "http://example.com"),
                         new MetaTag("music:song:disc", "2"),
-                        new MetaTag("music:song_count", "1"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -73,33 +75,43 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     },
                     new List<MetaTag>
                     {
+                        new MetaTag("music:song_count", "1"),
                         new MetaTag("music:song", "http://example.com"),
                         new MetaTag("music:song:track", "3"),
-                        new MetaTag("music:song_count", "1"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
                 {
-                    new OpenGraphMusicPlaylistTagHelper { Songs = new List<Song> { new Song("http://example.com/1.mp3"), new Song("http://example.com/2.mp3") } },
+                    new OpenGraphMusicPlaylistTagHelper
+                    {
+                        Songs =
+                            new List<Song>
+                            {
+                                new Song("http://example.com/1.mp3"),
+                                new Song("http://example.com/2.mp3")
+                            }
+                    },
                     new List<MetaTag>
                     {
+                        new MetaTag("music:song_count", "2"),
                         new MetaTag("music:song", "http://example.com/1.mp3"),
                         new MetaTag("music:song", "http://example.com/2.mp3"),
-                        new MetaTag("music:song_count", "2"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 }
             };
 
             [Theory]
             [MemberData(nameof(TestCases))]
-            private void ShouldContainCorrectMetaTags(OpenGraphMusicPlaylistTagHelper tagHelper, IEnumerable<MetaTag> expectedMetaTags)
+            private void ShouldContainCorrectMetaTags(
+                OpenGraphMusicPlaylistTagHelper tagHelper,
+                IEnumerable<MetaTag> expectedMetaTags)
             {
-                var context = TagHelperTestUtils.CreateDefaultContext();
-                var output = TagHelperTestUtils.CreateDefaultOutput();
+                TagHelperContext context = TagHelperTestUtils.CreateDefaultContext();
+                TagHelperOutput output = TagHelperTestUtils.CreateDefaultOutput();
 
                 tagHelper.Process(context, output);
 

@@ -1,19 +1,17 @@
 // Copyright (c) Winton. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for profile type pages.
     /// </summary>
-    [OpenGraphNamespaceAttribute("profile", "http://ogp.me/ns/profile#")]
+    [OpenGraphNamespace("profile", "http://ogp.me/ns/profile#")]
     public sealed class OpenGraphProfileTagHelper : OpenGraphTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphProfileTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphProfileTagHelper" /> class.
         /// </summary>
         public OpenGraphProfileTagHelper()
             : base("profile")
