@@ -47,7 +47,7 @@ namespace Winton.AspNetCore.Seo.Tests.Sitemaps
 
                 Sitemap sitemap = sitemapFactory.Create();
 
-                sitemap.ShouldAllBeEquivalentTo(expected);
+                sitemap.Should().BeEquivalentTo(expected);
             }
         }
     }

@@ -17,7 +17,7 @@
     <PackageVersion>$(NuGetVersion)</PackageVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wintoncode/Winton.AspNetCore.Seo</RepositoryUrl>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Title>Winton ASP.NET Core SEO Library</Title>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <WriteVersionInfoToBuildLog>False</WriteVersionInfoToBuildLog>
@@ -32,17 +32,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\Components\HeaderMetadata\Default.cshtml" />
-    <EmbeddedResource Include="Views\Shared\Components\HeaderMetadata\Default.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Flurl" Version="2.5.0" />
     <PackageReference Include="GitVersionTask" Version="4.0.0-beta0011" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="1.1.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="1.1.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="1.1.4" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.1.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.7.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.0.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
