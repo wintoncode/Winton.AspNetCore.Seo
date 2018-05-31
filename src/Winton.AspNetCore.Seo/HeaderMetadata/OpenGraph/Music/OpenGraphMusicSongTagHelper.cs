@@ -6,13 +6,14 @@ using System.Collections.Generic;
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for song types.
     /// </summary>
     public sealed class OpenGraphMusicSongTagHelper : OpenGraphMusicTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphMusicSongTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphMusicSongTagHelper" /> class.
         /// </summary>
         public OpenGraphMusicSongTagHelper()
             : base("song")

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
@@ -12,8 +11,11 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
     {
         public sealed class Process : OpenGraphBookTagHelperTests
         {
-            private static readonly MetaTag _TypeMetaTag = new MetaTag("og:type", "book");
-            private static readonly MetaTag _NamespaceMetaTag = new MetaTag("OpenGraphNamespaceTagHelperComponent", "book: http://ogp.me/ns/book# og: http://ogp.me/ns#");
+            private static readonly MetaTag NamespaceMetaTag = new MetaTag(
+                "OpenGraphNamespaceTagHelperComponent",
+                "book: http://ogp.me/ns/book# og: http://ogp.me/ns#");
+
+            private static readonly MetaTag TypeMetaTag = new MetaTag("og:type", "book");
 
             public static IEnumerable<object[]> TestCases => new List<object[]>
             {
@@ -22,8 +24,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new OpenGraphBookTagHelper(),
                     new List<MetaTag>
                     {
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -32,8 +34,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("book:author", "https://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -42,8 +44,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("book:isbn", "1234123"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -52,8 +54,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("book:release_date", "2017-01-01T00:00:00.0000000"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -62,18 +64,20 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("book:tag", "tag"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 }
             };
 
             [Theory]
             [MemberData(nameof(TestCases))]
-            private void ShouldContainCorrectMetaTags(OpenGraphBookTagHelper tagHelper, IEnumerable<MetaTag> expectedMetaTags)
+            private void ShouldContainCorrectMetaTags(
+                OpenGraphBookTagHelper tagHelper,
+                IEnumerable<MetaTag> expectedMetaTags)
             {
-                var context = TagHelperTestUtils.CreateDefaultContext();
-                var output = TagHelperTestUtils.CreateDefaultOutput();
+                TagHelperContext context = TagHelperTestUtils.CreateDefaultContext();
+                TagHelperOutput output = TagHelperTestUtils.CreateDefaultOutput();
 
                 tagHelper.Process(context, output);
 

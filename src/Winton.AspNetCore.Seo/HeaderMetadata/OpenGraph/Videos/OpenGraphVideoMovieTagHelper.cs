@@ -3,13 +3,14 @@
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for movie types.
     /// </summary>
     public sealed class OpenGraphVideoMovieTagHelper : OpenGraphVideoTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphVideoMovieTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphVideoMovieTagHelper" /> class.
         /// </summary>
         public OpenGraphVideoMovieTagHelper()
             : base("movie")

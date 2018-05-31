@@ -3,13 +3,14 @@
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for video episode types.
     /// </summary>
     public sealed class OpenGraphVideoEpisodeTagHelper : OpenGraphVideoTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphVideoEpisodeTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphVideoEpisodeTagHelper" /> class.
         /// </summary>
         public OpenGraphVideoEpisodeTagHelper()
             : base("episode")
