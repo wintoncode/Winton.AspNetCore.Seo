@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
@@ -12,8 +11,11 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
     {
         public sealed class Process : OpenGraphArticleTagHelperTests
         {
-            private static readonly MetaTag _TypeMetaTag = new MetaTag("og:type", "article");
-            private static readonly MetaTag _NamespaceMetaTag = new MetaTag("OpenGraphNamespaceTagHelperComponent", "article: http://ogp.me/ns/article# og: http://ogp.me/ns#");
+            private static readonly MetaTag NamespaceMetaTag = new MetaTag(
+                "OpenGraphNamespaceTagHelperComponent",
+                "article: http://ogp.me/ns/article# og: http://ogp.me/ns#");
+
+            private static readonly MetaTag TypeMetaTag = new MetaTag("og:type", "article");
 
             public static IEnumerable<object[]> TestCases => new List<object[]>
             {
@@ -22,8 +24,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new OpenGraphArticleTagHelper(),
                     new List<MetaTag>
                     {
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -32,8 +34,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:author", "https://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -42,8 +44,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:content_tier", "locked"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -52,8 +54,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:expiration_time", "2020-01-01T00:00:00.0000000"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -62,18 +64,21 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:modified_time", "2017-01-01T00:00:00.0000000"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
                 {
-                    new OpenGraphArticleTagHelper { PublishedTime = new DateTime(2016, 1, 1, 10, 5, 36, 123, DateTimeKind.Utc) },
+                    new OpenGraphArticleTagHelper
+                    {
+                        PublishedTime = new DateTime(2016, 1, 1, 10, 5, 36, 123, DateTimeKind.Utc)
+                    },
                     new List<MetaTag>
                     {
                         new MetaTag("article:published_time", "2016-01-01T10:05:36.1230000Z"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -82,8 +87,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:publisher", "http://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -92,8 +97,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:section", "Technology"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -102,18 +107,20 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
                     new List<MetaTag>
                     {
                         new MetaTag("article:tag", "tag"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 }
             };
 
             [Theory]
             [MemberData(nameof(TestCases))]
-            private void ShouldContainCorrectMetaTags(OpenGraphArticleTagHelper tagHelper, IEnumerable<MetaTag> expectedMetaTags)
+            private void ShouldContainCorrectMetaTags(
+                OpenGraphArticleTagHelper tagHelper,
+                IEnumerable<MetaTag> expectedMetaTags)
             {
-                var context = TagHelperTestUtils.CreateDefaultContext();
-                var output = TagHelperTestUtils.CreateDefaultOutput();
+                TagHelperContext context = TagHelperTestUtils.CreateDefaultContext();
+                TagHelperOutput output = TagHelperTestUtils.CreateDefaultOutput();
 
                 tagHelper.Process(context, output);
 

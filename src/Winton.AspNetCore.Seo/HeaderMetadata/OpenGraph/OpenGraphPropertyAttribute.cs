@@ -5,6 +5,7 @@ using System;
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Attibute that can be appled to a property representing an Open Graph property to specify the name
     ///     that should be used when serializing to meta tags.
@@ -24,15 +25,9 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         /// </summary>
         public string Name
         {
-            get
-            {
-                return _name ?? string.Empty;
-            }
+            get => _name ?? string.Empty;
 
-            set
-            {
-                _name = value;
-            }
+            set => _name = value;
         }
     }
 }

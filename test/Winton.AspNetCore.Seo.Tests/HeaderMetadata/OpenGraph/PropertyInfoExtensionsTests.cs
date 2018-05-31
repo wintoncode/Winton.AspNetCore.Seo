@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
@@ -13,21 +12,20 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
         public sealed class GetOpenGraphNamespace : PropertyInfoExtensionsTests
         {
             [Fact]
-            private void ShouldThrowWhenNoAttributeOnDeclaringClass()
-            {
-                PropertyInfo propertyInfo = typeof(ClassWithoutNamespaceAttribute).Properties().Single();
-
-                Action gettingNamespace = () => propertyInfo.GetOpenGraphNamespace();
-
-                gettingNamespace
-                    .Should().Throw<Exception>()
-                    .WithMessage("The type ClassWithoutNamespaceAttribute that declares the property Property is missing the required OpenGraphNamespaceAttribute");
-            }
-
-            [Fact]
             private void ShouldGetAttribute()
             {
                 PropertyInfo propertyInfo = typeof(ClassWithNamespaceAttribute).Properties().Single();
+
+                OpenGraphNamespaceAttribute attribute = propertyInfo.GetOpenGraphNamespace();
+
+                attribute.Should().Be(new OpenGraphNamespaceAttribute("base", "http://example.com/base"));
+            }
+
+            [Fact]
+            private void ShouldGetNamespaceFromAttributeOnBaseClassIfNotRespecified()
+            {
+                PropertyInfo propertyInfo = typeof(DerivedClassWithoutNamespaceAttribute)
+                    .GetProperty(nameof(DerivedClassWithoutNamespaceAttribute.Property));
 
                 OpenGraphNamespaceAttribute attribute = propertyInfo.GetOpenGraphNamespace();
 
@@ -46,14 +44,16 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             }
 
             [Fact]
-            private void ShouldGetNamespaceFromAttributeOnBaseClassIfNotRespecified()
+            private void ShouldThrowWhenNoAttributeOnDeclaringClass()
             {
-                PropertyInfo propertyInfo = typeof(DerivedClassWithoutNamespaceAttribute)
-                    .GetProperty(nameof(DerivedClassWithoutNamespaceAttribute.Property));
+                PropertyInfo propertyInfo = typeof(ClassWithoutNamespaceAttribute).Properties().Single();
 
-                OpenGraphNamespaceAttribute attribute = propertyInfo.GetOpenGraphNamespace();
+                Action gettingNamespace = () => propertyInfo.GetOpenGraphNamespace();
 
-                attribute.Should().Be(new OpenGraphNamespaceAttribute("base", "http://example.com/base"));
+                gettingNamespace
+                    .Should().Throw<Exception>()
+                    .WithMessage(
+                        "The type ClassWithoutNamespaceAttribute that declares the property Property is missing the required OpenGraphNamespaceAttribute");
             }
         }
 
@@ -73,18 +73,28 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             }
         }
 
-        private sealed class ClassWithoutNamespaceAttribute
-        {
-            public string Property { get; set; }
-        }
-
-        [OpenGraphNamespaceAttribute("base", "http://example.com/base")]
+        [OpenGraphNamespace("base", "http://example.com/base")]
         private class ClassWithNamespaceAttribute
         {
             public string InheritedProperty { get; set; }
         }
 
-        [OpenGraphNamespaceAttribute("derived", "http://example.com/derived")]
+        private sealed class ClassWithoutNamespaceAttribute
+        {
+            public string Property { get; set; }
+        }
+
+        private class ClassWithProperties
+        {
+            public string ComplexName { get; set; }
+
+            [OpenGraphProperty(Name = "attribute_value")]
+            public string PropertyWithAttribute { get; set; }
+
+            public string Simple { get; set; }
+        }
+
+        [OpenGraphNamespace("derived", "http://example.com/derived")]
         private class DerivedClassWithNamespaceAttribute : ClassWithNamespaceAttribute
         {
             public string Property { get; set; }
@@ -93,16 +103,6 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
         private class DerivedClassWithoutNamespaceAttribute : ClassWithNamespaceAttribute
         {
             public string Property { get; set; }
-        }
-
-        private class ClassWithProperties
-        {
-            [OpenGraphProperty(Name = "attribute_value")]
-            public string PropertyWithAttribute { get; set; }
-
-            public string ComplexName { get; set; }
-
-            public string Simple { get; set; }
         }
     }
 }

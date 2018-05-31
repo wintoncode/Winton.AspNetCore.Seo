@@ -109,4 +109,3 @@ UpgradeLog*.htm
 
 logs/
 *.log
-*.sln.DotSettings
