@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
+namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     public sealed class TagHelperTestUtils
     {

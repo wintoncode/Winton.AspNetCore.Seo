@@ -1,8 +1,7 @@
 ﻿using FluentAssertions;
-using Winton.AspNetCore.Seo.Robots;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.Robots
+namespace Winton.AspNetCore.Seo.Robots
 {
     public class UserAgentTest
     {

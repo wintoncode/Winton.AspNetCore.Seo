@@ -10,7 +10,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
     public sealed class Audio : Media
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Audio"/> class.
+        ///     Initializes a new instance of the <see cref="Audio" /> class.
         /// </summary>
         /// <param name="url">The url of the media Open Graph object.</param>
         public Audio(string url)

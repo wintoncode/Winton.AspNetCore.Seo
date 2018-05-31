@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
+namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     internal static class TagHelperOutputExtensions
     {

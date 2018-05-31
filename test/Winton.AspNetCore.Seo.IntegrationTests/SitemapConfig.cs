@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Winton.AspNetCore.Seo.Sitemaps;
 
-namespace Winton.AspNetCore.Seo.IntegrationTests
+namespace Winton.AspNetCore.Seo
 {
     internal sealed class SitemapConfig : ISitemapConfig
     {

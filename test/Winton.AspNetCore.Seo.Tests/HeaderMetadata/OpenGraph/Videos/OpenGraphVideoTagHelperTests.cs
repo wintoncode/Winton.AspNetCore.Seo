@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
-using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
+namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
 {
     public class OpenGraphVideoTagHelperTests
     {
