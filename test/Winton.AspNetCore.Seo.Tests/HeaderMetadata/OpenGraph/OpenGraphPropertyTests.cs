@@ -15,7 +15,7 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             [Theory]
             [InlineData(nameof(TestOpenGraphTagHelper.BogStandardProperty), "test:bog_standard_property")]
             [InlineData(nameof(TestOpenGraphTagHelper.PrimaryProperty), "test")]
-            [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverridenName), "test:overriden")]
+            [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverriddenName), "test:overridden")]
             private void ShouldCreateWithCorrectFullName(string propertyName, string expected)
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper();
@@ -29,7 +29,7 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             [Theory]
             [InlineData(nameof(TestOpenGraphTagHelper.BogStandardProperty), false)]
             [InlineData(nameof(TestOpenGraphTagHelper.PrimaryProperty), true)]
-            [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverridenName), false)]
+            [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverriddenName), false)]
             private void ShouldCreateWithCorrectIsPrimaryValue(string propertyName, bool expected)
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper();
@@ -43,14 +43,14 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             [Theory]
             [InlineData(nameof(TestOpenGraphTagHelper.BogStandardProperty), "bog standard value")]
             [InlineData(nameof(TestOpenGraphTagHelper.PrimaryProperty), "primary value")]
-            [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverridenName), "overidden value")]
+            [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverriddenName), "overidden value")]
             private void ShouldCreateWithCorrectValue(string propertyName, string expected)
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper()
                 {
                     BogStandardProperty = "bog standard value",
                     PrimaryProperty = "primary value",
-                    PropertyWithOverridenName = "overidden value"
+                    PropertyWithOverriddenName = "overidden value"
                 };
                 PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName);
 
@@ -88,8 +88,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             [OpenGraphProperty(IsPrimary = true)]
             public string PrimaryProperty { get; set; }
 
-            [OpenGraphProperty(Name = "overriden")]
-            public string PropertyWithOverridenName { get; set; }
+            [OpenGraphProperty(Name = "overridden")]
+            public string PropertyWithOverriddenName { get; set; }
         }
     }
 }

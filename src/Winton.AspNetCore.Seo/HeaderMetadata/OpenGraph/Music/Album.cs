@@ -20,7 +20,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         }
 
         /// <summary>
-        ///     Gets or sets he disc (within the album) that the song is on, defaulting to to '1'.
+        ///     Gets or sets the disc (within the album) that the song is on, defaulting to to '1'.
         /// </summary>
         public int? Disc { get; set; }
 
