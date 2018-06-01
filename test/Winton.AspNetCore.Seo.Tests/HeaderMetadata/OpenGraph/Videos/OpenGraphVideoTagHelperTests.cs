@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using FluentAssertions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
 using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos;
@@ -13,8 +11,11 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
     {
         public sealed class Process : OpenGraphVideoTagHelperTests
         {
-            private static readonly MetaTag _TypeMetaTag = new MetaTag("og:type", "video.test");
-            private static readonly MetaTag _NamespaceMetaTag = new MetaTag("OpenGraphNamespaceTagHelperComponent", "og: http://ogp.me/ns# video: http://ogp.me/ns/video#");
+            private static readonly MetaTag NamespaceMetaTag = new MetaTag(
+                "OpenGraphNamespaceTagHelperComponent",
+                "og: http://ogp.me/ns# video: http://ogp.me/ns/video#");
+
+            private static readonly MetaTag TypeMetaTag = new MetaTag("og:type", "video.test");
 
             public static IEnumerable<object[]> TestCases => new List<object[]>
             {
@@ -23,8 +24,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new TestOpenGraphVideoTagHelper(),
                     new List<MetaTag>
                     {
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -36,8 +37,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new List<MetaTag>
                     {
                         new MetaTag("video:actor", "http://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -50,8 +51,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     {
                         new MetaTag("video:actor", "http://example.com"),
                         new MetaTag("video:actor:role", "Hero"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -60,8 +61,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new List<MetaTag>
                     {
                         new MetaTag("video:director", "http://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -70,8 +71,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new List<MetaTag>
                     {
                         new MetaTag("video:duration", "1234"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -80,8 +81,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new List<MetaTag>
                     {
                         new MetaTag("video:release_date", "2017-01-01T00:00:00.0000000"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -90,8 +91,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new List<MetaTag>
                     {
                         new MetaTag("video:tag", "test"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -100,18 +101,20 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Videos
                     new List<MetaTag>
                     {
                         new MetaTag("video:writer", "http://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 }
             };
 
             [Theory]
             [MemberData(nameof(TestCases))]
-            private void ShouldContainCorrectMetaTags(TestOpenGraphVideoTagHelper tagHelper, IEnumerable<MetaTag> expectedMetaTags)
+            private void ShouldContainCorrectMetaTags(
+                TestOpenGraphVideoTagHelper tagHelper,
+                IEnumerable<MetaTag> expectedMetaTags)
             {
-                var context = TagHelperTestUtils.CreateDefaultContext();
-                var output = TagHelperTestUtils.CreateDefaultOutput();
+                TagHelperContext context = TagHelperTestUtils.CreateDefaultContext();
+                TagHelperOutput output = TagHelperTestUtils.CreateDefaultOutput();
 
                 tagHelper.Process(context, output);
 

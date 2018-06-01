@@ -2,7 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
@@ -39,7 +38,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         private bool HasNamespaceProperty(HtmlAttribute attribute)
         {
             return attribute.Name == "property" &&
-                attribute.Value == nameof(OpenGraphNamespaceTagHelperComponent);
+                   attribute.Value == nameof(OpenGraphNamespaceTagHelperComponent);
         }
     }
 }

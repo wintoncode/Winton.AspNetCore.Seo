@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
@@ -12,8 +11,11 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
     {
         public sealed class Process : OpenGraphMusicRadioStationTagHelperTests
         {
-            private static readonly MetaTag _TypeMetaTag = new MetaTag("og:type", "music.radio_station");
-            private static readonly MetaTag _NamespaceMetaTag = new MetaTag("OpenGraphNamespaceTagHelperComponent", "music: http://ogp.me/ns/music# og: http://ogp.me/ns#");
+            private static readonly MetaTag NamespaceMetaTag = new MetaTag(
+                "OpenGraphNamespaceTagHelperComponent",
+                "music: http://ogp.me/ns/music# og: http://ogp.me/ns#");
+
+            private static readonly MetaTag TypeMetaTag = new MetaTag("og:type", "music.radio_station");
 
             public static IEnumerable<object[]> TestCases => new List<object[]>
             {
@@ -22,8 +24,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     new OpenGraphMusicRadioStationTagHelper(),
                     new List<MetaTag>
                     {
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 },
                 new object[]
@@ -32,18 +34,20 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph.Music
                     new List<MetaTag>
                     {
                         new MetaTag("music:creator", "https://example.com"),
-                        _TypeMetaTag,
-                        _NamespaceMetaTag
+                        TypeMetaTag,
+                        NamespaceMetaTag
                     }
                 }
             };
 
             [Theory]
             [MemberData(nameof(TestCases))]
-            private void ShouldContainCorrectMetaTags(OpenGraphMusicRadioStationTagHelper tagHelper, IEnumerable<MetaTag> expectedMetaTags)
+            private void ShouldContainCorrectMetaTags(
+                OpenGraphMusicRadioStationTagHelper tagHelper,
+                IEnumerable<MetaTag> expectedMetaTags)
             {
-                var context = TagHelperTestUtils.CreateDefaultContext();
-                var output = TagHelperTestUtils.CreateDefaultOutput();
+                TagHelperContext context = TagHelperTestUtils.CreateDefaultContext();
+                TagHelperOutput output = TagHelperTestUtils.CreateDefaultOutput();
 
                 tagHelper.Process(context, output);
 

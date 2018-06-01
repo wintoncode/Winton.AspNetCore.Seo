@@ -8,15 +8,16 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     A tag helper that makes it easy to add <a href="http://ogp.me/">Open Graph</a> meta tags to a page.
     ///     These values determine how the page appears when shared on social networks that support Open Graph.
     /// </summary>
-    [OpenGraphNamespaceAttribute("og", "http://ogp.me/ns#")]
+    [OpenGraphNamespace("og", "http://ogp.me/ns#")]
     public abstract class OpenGraphTagHelper : TagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphTagHelper" /> class.
         /// </summary>
         /// <param name="type">The type of Open Graph object.</param>
         protected OpenGraphTagHelper(string type)
@@ -67,12 +68,12 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         public string Type { get; }
 
         /// <summary>
-        ///      Gets or sets the canonical URL of the object that will be used as its permanent ID in the graph.
+        ///     Gets or sets the canonical URL of the object that will be used as its permanent ID in the graph.
         /// </summary>
         public string Url { get; set; }
 
         /// <summary>
-        ///      Gets or sets a video that complements this object.
+        ///     Gets or sets a video that complements this object.
         /// </summary>
         public Video Video { get; set; }
 
@@ -86,12 +87,24 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             }
         }
 
+        private MetaTag CreateTemporaryNamepsaceMetaTag(IEnumerable<PropertyInfo> openGraphProperties)
+        {
+            return new MetaTag(
+                nameof(OpenGraphNamespaceTagHelperComponent),
+                string.Join(
+                    " ",
+                    openGraphProperties
+                        .Select(p => p.GetOpenGraphNamespace().ToPrefixValue())
+                        .Distinct()
+                        .OrderBy(s => s)));
+        }
+
         private IEnumerable<MetaTag> GetMetaTags()
         {
-            IEnumerable<PropertyInfo> openGraphProperties = this
-                .GetType()
+            List<PropertyInfo> openGraphProperties = GetType()
                 .GetProperties()
-                .Where(p => typeof(OpenGraphTagHelper).IsAssignableFrom(p.DeclaringType));
+                .Where(p => typeof(OpenGraphTagHelper).IsAssignableFrom(p.DeclaringType))
+                .ToList();
 
             return openGraphProperties
                 .SelectMany(p => p.GetOpenGraphPropertyInfo(this).ToMetaTags())
@@ -100,15 +113,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                     {
                         CreateTemporaryNamepsaceMetaTag(openGraphProperties)
                     });
-        }
-
-        private MetaTag CreateTemporaryNamepsaceMetaTag(IEnumerable<PropertyInfo> openGraphProperties)
-        {
-            return new MetaTag(
-                nameof(OpenGraphNamespaceTagHelperComponent),
-                string.Join(
-                    " ",
-                    openGraphProperties.Select(p => p.GetOpenGraphNamespace().ToPrefixValue()).Distinct().OrderBy(s => s)));
         }
     }
 }

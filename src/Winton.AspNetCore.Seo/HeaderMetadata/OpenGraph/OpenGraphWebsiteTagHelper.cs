@@ -3,13 +3,14 @@
 
 namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
+    /// <inheritdoc />
     /// <summary>
     ///     An Open Graph tag helper for website type pages.
     /// </summary>
     public sealed class OpenGraphWebsiteTagHelper : OpenGraphTagHelper
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="OpenGraphWebsiteTagHelper"/> class.
+        ///     Initializes a new instance of the <see cref="OpenGraphWebsiteTagHelper" /> class.
         /// </summary>
         public OpenGraphWebsiteTagHelper()
             : base("website")

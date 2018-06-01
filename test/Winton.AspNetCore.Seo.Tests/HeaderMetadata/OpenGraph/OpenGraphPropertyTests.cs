@@ -46,7 +46,7 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             [InlineData(nameof(TestOpenGraphTagHelper.PropertyWithOverriddenName), "overidden value")]
             private void ShouldCreateWithCorrectValue(string propertyName, string expected)
             {
-                var openGraphTagHelper = new TestOpenGraphTagHelper()
+                var openGraphTagHelper = new TestOpenGraphTagHelper
                 {
                     BogStandardProperty = "bog standard value",
                     PrimaryProperty = "primary value",
@@ -66,7 +66,8 @@ namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
             private void ShouldReturnFinalSegmentOfFullName()
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper();
-                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(nameof(TestOpenGraphTagHelper.BogStandardProperty));
+                PropertyInfo propertyInfo =
+                    openGraphTagHelper.GetType().GetProperty(nameof(TestOpenGraphTagHelper.BogStandardProperty));
                 OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
                 string name = openGraphProperty.Name;
