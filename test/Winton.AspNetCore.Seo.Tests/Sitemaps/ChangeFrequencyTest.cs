@@ -1,10 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.Serialization;
 using FluentAssertions;
-using Winton.AspNetCore.Seo.Sitemaps;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.Sitemaps
+namespace Winton.AspNetCore.Seo.Sitemaps
 {
     public class ChangeFrequencyTest
     {

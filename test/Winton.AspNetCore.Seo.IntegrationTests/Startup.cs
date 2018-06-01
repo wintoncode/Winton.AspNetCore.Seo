@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Winton.AspNetCore.Seo.Extensions;
 
-namespace Winton.AspNetCore.Seo.IntegrationTests
+namespace Winton.AspNetCore.Seo
 {
     internal class Startup : IStartup
     {

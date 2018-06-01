@@ -6,9 +6,8 @@ using FluentAssertions.Equivalency;
 using FluentAssertions.Primitives;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
 
-namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
+namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     internal sealed class TagHelperOutputAssertions :
         ReferenceTypeAssertions<TagHelperOutput, TagHelperOutputAssertions>

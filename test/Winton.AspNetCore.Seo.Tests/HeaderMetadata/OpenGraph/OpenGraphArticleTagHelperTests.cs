@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.HeaderMetadata.OpenGraph
+namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     public class OpenGraphArticleTagHelperTests
     {

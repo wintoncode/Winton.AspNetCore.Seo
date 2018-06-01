@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.IntegrationTests
+namespace Winton.AspNetCore.Seo
 {
     public class SeoControllerIntegrationTest
     {

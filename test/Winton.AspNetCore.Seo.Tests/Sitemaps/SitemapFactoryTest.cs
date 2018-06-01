@@ -2,10 +2,9 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using Winton.AspNetCore.Seo.Sitemaps;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.Sitemaps
+namespace Winton.AspNetCore.Seo.Sitemaps
 {
     public class SitemapFactoryTest
     {
