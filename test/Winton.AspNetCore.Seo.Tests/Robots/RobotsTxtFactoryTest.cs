@@ -74,7 +74,7 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
 
                 string robotsTxt = robotsFactory.Create();
 
-                robotsTxt.Should().Contain("GetSitemap: https://example.com:5000/app-root/sitemap.xml");
+                robotsTxt.Should().Contain("Sitemap: https://example.com:5000/app-root/sitemap.xml");
             }
 
             [Theory]
@@ -88,7 +88,7 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
 
                 string robotsTxt = robotsFactory.Create();
 
-                robotsTxt.Contains("GetSitemap").Should().Be(expected);
+                robotsTxt.Contains("Sitemap").Should().Be(expected);
             }
 
             [Fact]
