@@ -18,15 +18,15 @@ namespace Winton.AspNetCore.Seo.Extensions
         /// <returns>The instance of the <see cref="IRouteBuilder" /> that was passed in.</returns>
         public static IRouteBuilder MapSeoRoutes(this IRouteBuilder routeBuilder)
         {
-            routeBuilder.MapRoute(
-                "robots",
-                Constants.RobotsUrl,
-                new { controller = "Seo", action = nameof(SeoController.GetRobots) });
-            routeBuilder.MapRoute(
-                "sitemap",
-                Constants.SitemapUrl,
-                new { controller = "Seo", action = nameof(SeoController.GetSitemap) });
-            return routeBuilder;
+            return routeBuilder
+                .MapRoute(
+                    "robots",
+                    Constants.RobotsUrl,
+                    new { controller = "Seo", action = nameof(SeoController.GetRobots) })
+                .MapRoute(
+                    "sitemap",
+                    Constants.SitemapUrl,
+                    new { controller = "Seo", action = nameof(SeoController.GetSitemap) });
         }
     }
 }

@@ -3,10 +3,9 @@ using System.Text;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using Winton.AspNetCore.Seo.Robots;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.Robots
+namespace Winton.AspNetCore.Seo.Robots
 {
     public class RobotsTxtFactoryTest
     {

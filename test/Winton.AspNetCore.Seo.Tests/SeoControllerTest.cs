@@ -5,7 +5,7 @@ using Winton.AspNetCore.Seo.Robots;
 using Winton.AspNetCore.Seo.Sitemaps;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests
+namespace Winton.AspNetCore.Seo
 {
     public class SeoControllerTest
     {

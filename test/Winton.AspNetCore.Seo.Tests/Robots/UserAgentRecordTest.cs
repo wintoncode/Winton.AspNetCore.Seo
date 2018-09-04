@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
-using Winton.AspNetCore.Seo.Robots;
 using Xunit;
 
-namespace Winton.AspNetCore.Seo.Tests.Robots
+namespace Winton.AspNetCore.Seo.Robots
 {
     public class UserAgentRecordTest
     {
@@ -46,6 +45,19 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                 record.Should().Contain("Disallow: /test").And.Contain("Disallow: /foo");
             }
 
+            [Fact]
+            private void ShouldContainNoindexDirectiveIfDefinedForUrl()
+            {
+                var userAgentRecord = new UserAgentRecord
+                {
+                    NoIndex = new List<string> { "/test", "/foo" }
+                };
+
+                string record = userAgentRecord.ToString();
+
+                record.Should().Contain("Noindex: /test").And.Contain("Noindex: /foo");
+            }
+
             [Theory]
             [InlineData("Google")]
             [InlineData("Bing")]
@@ -59,19 +71,6 @@ namespace Winton.AspNetCore.Seo.Tests.Robots
                 string record = userAgentRecord.ToString();
 
                 record.Should().Contain($"User-agent: {userAgent}");
-            }
-
-            [Fact]
-            private void ShouldContainNoindexDirectiveIfDefinedForUrl()
-            {
-                var userAgentRecord = new UserAgentRecord
-                {
-                    NoIndex = new List<string> { "/test", "/foo" }
-                };
-
-                string record = userAgentRecord.ToString();
-
-                record.Should().Contain("Noindex: /test").And.Contain("Noindex: /foo");
             }
         }
 
