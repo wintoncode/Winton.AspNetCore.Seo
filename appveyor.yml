@@ -10,7 +10,7 @@ skip_tags: true
 before_build:
     - dotnet restore
 build_script:
-    - msbuild /p:GetVersion=True /p:WriteVersionInfoToBuildLog=True
+    - dotnet build --no-restore --configuration Release
 test_script:
     - dotnet test test/Winton.AspNetCore.Seo.Tests/ --no-build --no-restore --configuration Release
     - dotnet test test/Winton.AspNetCore.Seo.IntegrationTests/ --no-build --no-restore --configuration Release
