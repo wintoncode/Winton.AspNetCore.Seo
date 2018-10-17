@@ -9,17 +9,17 @@ env:
 matrix:
   include:
     - os: linux
-      dotnet: 2.0.0
+      dotnet: 2.1.403
     - os: osx 
       osx_image: xcode9 # OSX 10.12
-      dotnet: 2.0.0
+      dotnet: 2.1.403
       before_install:
         - ulimit -n 4096
 script:
   - dotnet restore
-  - dotnet build --configuration Release
-  - dotnet test test/Winton.AspNetCore.Seo.Tests/ --no-build --configuration Release --framework netcoreapp2.0
-  - dotnet test test/Winton.AspNetCore.Seo.IntegrationTests/ --no-build --configuration Release
+  - dotnet build --no-restore --configuration Release
+  - dotnet test test/Winton.AspNetCore.Seo.Tests/ --no-build --no-restore --configuration Release
+  - dotnet test test/Winton.AspNetCore.Seo.IntegrationTests/ --no-build --no-restore --configuration Release
 notifications:
   on_success: always
   on_failure: always

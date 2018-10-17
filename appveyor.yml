@@ -12,8 +12,8 @@ before_build:
 build_script:
     - msbuild /p:GetVersion=True /p:WriteVersionInfoToBuildLog=True
 test_script:
-    - dotnet test test/Winton.AspNetCore.Seo.Tests/ --no-build --configuration Release
-    - dotnet test test/Winton.AspNetCore.Seo.IntegrationTests/ --no-build --configuration Release
+    - dotnet test test/Winton.AspNetCore.Seo.Tests/ --no-build --no-restore --configuration Release
+    - dotnet test test/Winton.AspNetCore.Seo.IntegrationTests/ --no-build --no-restore --configuration Release
 artifacts:
 - path: .\**\*.nupkg
   name: NuGet
