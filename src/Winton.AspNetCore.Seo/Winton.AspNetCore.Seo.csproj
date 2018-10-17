@@ -6,7 +6,6 @@
     <Copyright>Copyright 2017 Winton</Copyright>
     <Description>ASP.NET Core Library for adding SEO metadata to websites</Description>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <GetVersion>False</GetVersion>
     <NoWarn>$(NoWarn);SA1101;SA1309;SA1413</NoWarn>
     <PackageId>Winton.AspNetCore.Seo</PackageId>
     <PackageIconUrl>https://raw.githubusercontent.com/wintoncode/Winton.AspNetCore.Seo/master/icon.jpg</PackageIconUrl>
@@ -20,7 +19,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>Winton ASP.NET Core SEO Library</Title>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <WriteVersionInfoToBuildLog>False</WriteVersionInfoToBuildLog>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -33,7 +31,7 @@
 
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.7.1" />
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0011" PrivateAssets="All" />
+    <PackageReference Include="GitVersionTask" Version="4.0.0" PrivateAssets="All" />
     <PackageReference Include="HtmlAgilityPack" Version="1.8.9" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="2.0.4" />
