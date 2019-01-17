@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Winton.AspNetCore.Seo
 {
-    public class SeoControllerIntegrationTests
+    public sealed class SeoControllerIntegrationTests
     {
         private const string _RobotsEndpoint = "robots.txt";
         private const string _SitemapEndpoint = "sitemap.xml";
