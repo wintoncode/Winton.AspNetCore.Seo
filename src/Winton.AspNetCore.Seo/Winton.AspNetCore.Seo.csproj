@@ -9,7 +9,7 @@
     <NoWarn>$(NoWarn);SA1101;SA1309;SA1413</NoWarn>
     <PackageId>Winton.AspNetCore.Seo</PackageId>
     <PackageIconUrl>https://raw.githubusercontent.com/wintoncode/Winton.AspNetCore.Seo/master/icon.jpg</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/wintoncode/Winton.AspNetCore.Seo/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/wintoncode/Winton.AspNetCore.Seo</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, ASP.NET, Core, SEO, Search, Engine, Optimization</PackageTags>
@@ -27,6 +27,7 @@
   
   <ItemGroup>
     <AdditionalFiles Include="../../stylecop.json" />
+    <None Include="../../LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <ItemGroup>
