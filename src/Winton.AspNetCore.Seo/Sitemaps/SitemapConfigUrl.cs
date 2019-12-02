@@ -11,14 +11,14 @@ namespace Winton.AspNetCore.Seo.Sitemaps
     public sealed class SitemapConfigUrl
     {
         /// <summary>
-        ///     Gets or sets the relative priority of the URL in the sitemap. Should be a value in the range [0.0, 1.0]
+        ///     Gets or sets the relative priority of the URL in the sitemap. Should be a value in the range [0.0, 1.0].
         /// </summary>
         public decimal? Priority { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the relative URL.
         /// </summary>
-        public string RelativeUrl { get; set; }
+        public string? RelativeUrl { get; set; }
 
         /// <summary>
         ///     Converts this configuration into a <see cref="SitemapUrl" />.

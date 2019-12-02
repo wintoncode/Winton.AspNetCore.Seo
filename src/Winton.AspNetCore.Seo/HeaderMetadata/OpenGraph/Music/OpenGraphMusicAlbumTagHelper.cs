@@ -23,7 +23,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         ///     Gets or sets the artists of this album. This is a URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(Name = "musician")]
-        public IEnumerable<string> Musicians { get; set; }
+        public IEnumerable<string>? Musicians { get; set; }
 
         /// <summary>
         ///     Gets or sets the release date of the album.
@@ -33,12 +33,12 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         /// <summary>
         ///     Gets or sets the type of the album's release; one of 'original_release', 're_release', or 'anthology'.
         /// </summary>
-        public string ReleaseType { get; set; }
+        public string? ReleaseType { get; set; }
 
         /// <summary>
         ///     Gets or sets the songs on this album.
         /// </summary>
         [OpenGraphProperty(Name = "song")]
-        public IEnumerable<Song> Songs { get; set; }
+        public IEnumerable<Song>? Songs { get; set; }
     }
 }

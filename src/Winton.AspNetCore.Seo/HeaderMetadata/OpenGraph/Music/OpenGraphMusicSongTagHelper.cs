@@ -24,7 +24,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         ///     Gets or sets the albums this song belongs to.
         /// </summary>
         [OpenGraphProperty(Name = "album")]
-        public IEnumerable<Album> Albums { get; set; }
+        public IEnumerable<Album>? Albums { get; set; }
 
         /// <summary>
         ///     Gets or sets the length of the song in seconds.
@@ -34,18 +34,18 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         /// <summary>
         ///     Gets or sets the product ID of this song.
         /// </summary>
-        public string Isrc { get; set; }
+        public string? Isrc { get; set; }
 
         /// <summary>
         ///     Gets or sets the artists of this song. This is a URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(Name = "musician")]
-        public IEnumerable<string> Musicians { get; set; }
+        public IEnumerable<string>? Musicians { get; set; }
 
         /// <summary>
         ///     Gets or sets the preview urls for this song.
         /// </summary>
-        public IEnumerable<Audio> PreviewUrl { get; set; }
+        public IEnumerable<Audio>? PreviewUrl { get; set; }
 
         /// <summary>
         ///     Gets or sets a time representing when the song was released.
@@ -55,6 +55,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         /// <summary>
         ///     Gets or sets the type of the song's release; one of 'original_release', 're_release', or 'anthology'.
         /// </summary>
-        public string ReleaseType { get; set; }
+        public string? ReleaseType { get; set; }
     }
 }

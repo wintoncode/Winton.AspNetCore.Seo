@@ -25,11 +25,12 @@ namespace Winton.AspNetCore.Seo.Sitemaps
             [InlineData(nameof(ChangeFrequency.Never), "never")]
             private void ShouldHaveCorrectValue(string memberName, string expectedValue)
             {
-                typeof(ChangeFrequency).GetField(memberName)
-                                       .GetCustomAttribute<EnumMemberAttribute>()
-                                       .Value
-                                       .Should()
-                                       .Be(expectedValue);
+                typeof(ChangeFrequency)
+                    .GetField(memberName)?
+                    .GetCustomAttribute<EnumMemberAttribute>()?
+                    .Value
+                    .Should()
+                    .Be(expectedValue);
             }
 
             [Theory]
@@ -42,10 +43,11 @@ namespace Winton.AspNetCore.Seo.Sitemaps
             [InlineData(nameof(ChangeFrequency.Never))]
             private void ShouldHaveEnumMemberAttribute(string memberName)
             {
-                typeof(ChangeFrequency).GetField(memberName)
-                                       .GetCustomAttributes<EnumMemberAttribute>()
-                                       .Should()
-                                       .NotBeEmpty();
+                typeof(ChangeFrequency)
+                    .GetField(memberName)?
+                    .GetCustomAttributes<EnumMemberAttribute>()?
+                    .Should()
+                    .NotBeEmpty();
             }
         }
     }

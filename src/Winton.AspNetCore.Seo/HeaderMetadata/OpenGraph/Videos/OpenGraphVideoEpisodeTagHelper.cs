@@ -20,6 +20,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
         /// <summary>
         ///     Gets or sets the series that this episode if part of. This is a URL of a page with og:type video.tv_show.
         /// </summary>
-        public string Series { get; set; }
+        public string? Series { get; set; }
     }
 }

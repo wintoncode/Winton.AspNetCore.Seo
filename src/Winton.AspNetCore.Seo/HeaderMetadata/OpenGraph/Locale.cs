@@ -23,13 +23,13 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         /// <summary>
         ///     Gets or sets a collection of other locales this page is available in.
         /// </summary>
-        public IEnumerable<string> Alternate { get; set; }
+        public IEnumerable<string>? Alternate { get; set; }
 
         /// <summary>
         ///     Gets the primary locale.
         ///     If not specified, Open Graph defaults to en_US.
         /// </summary>
         [OpenGraphProperty(IsPrimary = true)]
-        public string Primary { get; }
+        public string? Primary { get; }
     }
 }

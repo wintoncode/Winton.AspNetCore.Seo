@@ -18,6 +18,6 @@ namespace Winton.AspNetCore.Seo.Robots
         /// <summary>
         ///     Gets the collection of <see cref="UserAgentRecord" />s to put in the robots.txt file.
         /// </summary>
-        IEnumerable<UserAgentRecord> UserAgentRecords { get; }
+        IEnumerable<UserAgentRecord>? UserAgentRecords { get; }
     }
 }

@@ -21,11 +21,11 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
         ///     Gets the URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(IsPrimary = true)]
-        public string Id { get; }
+        public string? Id { get; }
 
         /// <summary>
         ///     Gets or sets the role the actor played.
         /// </summary>
-        public string Role { get; set; }
+        public string? Role { get; set; }
     }
 }

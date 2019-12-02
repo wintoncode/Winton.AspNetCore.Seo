@@ -23,7 +23,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         /// <summary>
         ///     Gets or sets the creator of this playlist. This is a URL of a page with og:type profile.
         /// </summary>
-        public string Creator { get; set; }
+        public string? Creator { get; set; }
 
         /// <summary>
         ///     Gets the number of songs on this playlist.
@@ -34,6 +34,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         ///     Gets or sets the songs on this playlist.
         /// </summary>
         [OpenGraphProperty(Name = "song")]
-        public IEnumerable<Song> Songs { get; set; }
+        public IEnumerable<Song>? Songs { get; set; }
     }
 }

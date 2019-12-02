@@ -52,7 +52,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
             {
                 var tagHelper = new OpenGraphVideoOtherTagHelper();
 
-                string type = tagHelper.Type;
+                string? type = tagHelper.Type;
 
                 type.Should().Be("video.other");
             }

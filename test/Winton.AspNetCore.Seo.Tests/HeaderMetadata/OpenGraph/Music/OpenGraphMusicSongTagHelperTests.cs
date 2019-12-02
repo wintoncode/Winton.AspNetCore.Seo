@@ -157,7 +157,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
             {
                 var tagHelper = new OpenGraphMusicSongTagHelper();
 
-                string type = tagHelper.Type;
+                string? type = tagHelper.Type;
 
                 type.Should().Be("music.song");
             }

@@ -15,7 +15,7 @@ namespace Winton.AspNetCore.Seo.Robots
         /// <summary>
         ///     Gets or sets the URLs to disallow for this <see cref="UserAgent" />.
         /// </summary>
-        public IEnumerable<string> Disallow { get; set; }
+        public IEnumerable<string>? Disallow { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether all URLs should be disallowed for this <see cref="UserAgent" />.
@@ -25,10 +25,10 @@ namespace Winton.AspNetCore.Seo.Robots
         /// <summary>
         ///     Gets or sets the URLs that should not be indexed by this <see cref="UserAgent" />.
         /// </summary>
-        public IEnumerable<string> NoIndex { get; set; }
+        public IEnumerable<string>? NoIndex { get; set; }
 
         /// <summary>
-        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <code>UserAgent.Any</code>.
+        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <c>UserAgent.Any</c>.
         /// </summary>
         public UserAgent UserAgent { get; set; } = UserAgent.Any;
 

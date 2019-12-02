@@ -7,16 +7,16 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     /// <inheritdoc />
     /// <summary>
-    ///     Attibute that can be appled to a property representing an Open Graph property to specify the name
+    ///     Attribute that can be applied to a property representing an Open Graph property to specify the name
     ///     that should be used when serializing to meta tags.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public sealed class OpenGraphPropertyAttribute : Attribute
     {
-        private string _name;
+        private string? _name;
 
         /// <summary>
-        ///     Gets or sets a value indicating whether or not this is root property for an object
+        ///     Gets or sets a value indicating whether or not this is root property for an object.
         /// </summary>
         public bool IsPrimary { get; set; }
 
@@ -26,7 +26,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         public string Name
         {
             get => _name ?? string.Empty;
-
             set => _name = value;
         }
     }

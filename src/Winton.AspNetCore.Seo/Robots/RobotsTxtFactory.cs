@@ -39,7 +39,7 @@ namespace Winton.AspNetCore.Seo.Robots
 
         private string CreateSitemapUrl()
         {
-            string baseUrl = _httpContextAccessor?.HttpContext?.Request?.GetEncodedUrl();
+            string? baseUrl = _httpContextAccessor?.HttpContext?.Request?.GetEncodedUrl();
             Url sitemapUrl = (baseUrl ?? string.Empty).Replace(Constants.RobotsUrl, Constants.SitemapUrl);
             return $"Sitemap: {sitemapUrl}";
         }

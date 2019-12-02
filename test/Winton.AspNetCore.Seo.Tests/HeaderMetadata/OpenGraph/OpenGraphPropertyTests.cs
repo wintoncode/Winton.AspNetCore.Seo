@@ -1,6 +1,7 @@
 // Copyright (c) Winton. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using System;
 using System.Reflection;
 using FluentAssertions;
 using Xunit;
@@ -18,7 +19,8 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             private void ShouldCreateWithCorrectFullName(string propertyName, string expected)
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper();
-                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName);
+                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName) ??
+                                            throw new ArgumentNullException(nameof(propertyInfo));
 
                 OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
@@ -32,7 +34,8 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             private void ShouldCreateWithCorrectIsPrimaryValue(string propertyName, bool expected)
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper();
-                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName);
+                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName) ??
+                                            throw new ArgumentNullException(nameof(propertyInfo));
 
                 OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
@@ -51,7 +54,8 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                     PrimaryProperty = "primary value",
                     PropertyWithOverriddenName = "overidden value"
                 };
-                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName);
+                PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName)
+                                            ?? throw new ArgumentNullException(nameof(propertyInfo));
 
                 OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
@@ -66,7 +70,8 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             {
                 var openGraphTagHelper = new TestOpenGraphTagHelper();
                 PropertyInfo propertyInfo =
-                    openGraphTagHelper.GetType().GetProperty(nameof(TestOpenGraphTagHelper.BogStandardProperty));
+                    openGraphTagHelper.GetType().GetProperty(nameof(TestOpenGraphTagHelper.BogStandardProperty)) ??
+                    throw new ArgumentNullException(nameof(propertyInfo));
                 OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
                 string name = openGraphProperty.Name;
@@ -83,13 +88,13 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             {
             }
 
-            public string BogStandardProperty { get; set; }
+            public string? BogStandardProperty { get; set; }
 
             [OpenGraphProperty(IsPrimary = true)]
-            public string PrimaryProperty { get; set; }
+            public string? PrimaryProperty { get; set; }
 
             [OpenGraphProperty(Name = "overridden")]
-            public string PropertyWithOverriddenName { get; set; }
+            public string? PropertyWithOverriddenName { get; set; }
         }
     }
 }

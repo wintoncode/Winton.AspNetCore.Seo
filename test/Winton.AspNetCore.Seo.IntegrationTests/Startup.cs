@@ -8,12 +8,15 @@ namespace Winton.AspNetCore.Seo
     {
         public void Configure(IApplicationBuilder app)
         {
-            app.UseMvc(builder => builder.MapSeoRoutes());
+            app
+                .UseMvc(builder => builder.MapSeoRoutes());
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSeo<SitemapConfig>();
+            services
+                .AddSeo<SitemapConfig>()
+                .AddMvc(options => options.EnableEndpointRouting = false);
         }
     }
 }

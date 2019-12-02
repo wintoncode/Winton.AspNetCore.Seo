@@ -24,12 +24,12 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         ///     Gets or sets the authors of this article. Each value is a URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(Name = "author")]
-        public IEnumerable<string> Authors { get; set; }
+        public IEnumerable<string>? Authors { get; set; }
 
         /// <summary>
         ///     Gets or sets the content tier that the publisher sets to specify whether article is free, locked, or metered.
         /// </summary>
-        public string ContentTier { get; set; }
+        public string? ContentTier { get; set; }
 
         /// <summary>
         ///     Gets or sets the expiration time of the article.
@@ -49,17 +49,17 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         /// <summary>
         ///     Gets or sets a reference to the publisher. A URL of a page with og:type profile.
         /// </summary>
-        public string Publisher { get; set; }
+        public string? Publisher { get; set; }
 
         /// <summary>
         ///     Gets or sets the high-level section name. E.g. Technology.
         /// </summary>
-        public string Section { get; set; }
+        public string? Section { get; set; }
 
         /// <summary>
         ///     Gets or sets the tag words associated with this article.
         /// </summary>
         [OpenGraphProperty(Name = "tag")]
-        public IEnumerable<string> Tags { get; set; }
+        public IEnumerable<string>? Tags { get; set; }
     }
 }

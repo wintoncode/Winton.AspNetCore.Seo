@@ -52,7 +52,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             {
                 var tagHelper = new OpenGraphWebsiteTagHelper();
 
-                string type = tagHelper.Type;
+                string? type = tagHelper.Type;
 
                 type.Should().Be("website");
             }
