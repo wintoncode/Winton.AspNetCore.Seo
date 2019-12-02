@@ -1,0 +1,28 @@
+﻿@using System;
+@using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <open-graph-article
+        audio="@(new Audio("http://example.com"))"
+        authors="@(new List<string> { "http://example.com/choc13" })"
+        description="Test description"
+        images="@(new List<Image>
+                {
+                    new Image("http://example.com/img1.jpg") { SecureUrl = "https://example.com/img1.jpg", Height = 250 },
+                    new Image("http://example.com/img2.jpg") { SecureUrl = "https://example.com/img2.jpg", Height = 300, Width = 500 }
+                }
+            )"
+        published-time="@(new DateTime(2019, 1, 1))"
+        title="Test"
+    >
+    </open-graph-article>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - TestApp</title>
+</head>
+<body>
+        @RenderBody()
+</body>
+</html>

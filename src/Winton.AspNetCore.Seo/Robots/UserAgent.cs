@@ -77,14 +77,9 @@ namespace Winton.AspNetCore.Seo.Robots
         }
 
         /// <inheritdoc />
-        public override bool Equals(object other)
+        public override bool Equals(object? other)
         {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            return other is UserAgent && Equals((UserAgent)other);
+            return other != null && other is UserAgent agent && Equals(agent);
         }
 
         /// <inheritdoc />

@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winton.AspNetCore.Seo.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winton.AspNetCore.Seo.IntegrationTests", "test\Winton.AspNetCore.Seo.IntegrationTests\Winton.AspNetCore.Seo.IntegrationTests.csproj", "{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "test\TestApp\TestApp.csproj", "{1D490AFF-3C07-4E27-AA34-C11118062BEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D490AFF-3C07-4E27-AA34-C11118062BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D490AFF-3C07-4E27-AA34-C11118062BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D490AFF-3C07-4E27-AA34-C11118062BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D490AFF-3C07-4E27-AA34-C11118062BEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{AFD7B9E8-83D5-480E-B7A5-3A5B89228845} = {531B7C9B-C476-400B-895F-97D76BB93BDB}
 		{FEF7A97C-DC75-4B87-A53F-6990F7DDB775} = {BFC44C4D-8443-453F-A395-FF656629171E}
 		{5355C84C-9CD9-4FF2-9CFF-2B0420E56F02} = {BFC44C4D-8443-453F-A395-FF656629171E}
+		{1D490AFF-3C07-4E27-AA34-C11118062BEB} = {BFC44C4D-8443-453F-A395-FF656629171E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {049F42AA-6AD9-4BCA-849A-24581CD1DF40}

@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace Winton.AspNetCore.Seo.Robots
 {
@@ -12,9 +13,9 @@ namespace Winton.AspNetCore.Seo.Robots
     /// </summary>
     internal sealed class DefaultRobotsTxtOptions : IRobotsTxtOptions
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public DefaultRobotsTxtOptions(IHostingEnvironment hostingEnvironment)
+        public DefaultRobotsTxtOptions(IWebHostEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
         }

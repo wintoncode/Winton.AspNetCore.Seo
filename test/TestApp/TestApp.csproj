@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <RootNamespace>Winton.AspNetCore.Seo.TestApp</RootNamespace>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Winton.AspNetCore.Seo\Winton.AspNetCore.Seo.csproj" />
+  </ItemGroup>
+
+</Project>

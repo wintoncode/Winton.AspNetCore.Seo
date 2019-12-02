@@ -47,14 +47,6 @@ Install-Package Winton.AspNetCore.Seo
     }
     ```
 
-1. Add SEO routes to MVC. For instance in `Startup.cs`:
-
-    ```csharp
-    public void Configure(IApplicationBuilder app)
-    {
-        app.UseMvc(routeBuilder => routeBuilder.MapSeoRoutes());
-    }
-    ```
 1. Add the appropriate Open Graph TagHelper to your HTML files. For instance in `_Layout.cshtml`:
 
     ```html
