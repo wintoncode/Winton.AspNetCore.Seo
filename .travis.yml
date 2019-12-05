@@ -18,7 +18,7 @@ matrix:
         - ulimit -n 4096
 script:
   - dotnet build -c Release
-  - dotnet test -c Release --no-build
+  - dotnet test -c Release --no-build -- xunit.parallel none
 notifications:
   on_success: always
   on_failure: always
