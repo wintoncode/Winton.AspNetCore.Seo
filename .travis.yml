@@ -17,7 +17,6 @@ matrix:
       before_install:
         - ulimit -n 4096
 script:
-  - dotnet build -c Release
   - dotnet test -c Release
 notifications:
   on_success: always
