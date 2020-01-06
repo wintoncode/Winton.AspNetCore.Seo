@@ -11,7 +11,7 @@ namespace Winton.AspNetCore.Seo.Robots
     {
         private static IRobotsTxtOptions CreateRobotsTxtOptions(
             bool addSitemapUrl,
-            IEnumerable<UserAgentRecord> userAgentRecords = null)
+            IEnumerable<UserAgentRecord>? userAgentRecords = null)
         {
             var mock = new Mock<IRobotsTxtOptions>(MockBehavior.Strict);
             mock.SetupGet(rto => rto.AddSitemapUrl).Returns(addSitemapUrl);

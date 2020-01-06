@@ -9,16 +9,15 @@ env:
 matrix:
   include:
     - os: linux
-      dist: xenial
-      dotnet: 2.2
-    - os: osx 
-      osx_image: xcode9 # OSX 10.12
-      dotnet: 2.2.104
+      dist: bionic
+      dotnet: 3.1
+    - os: osx
+      osx_image: xcode11.2
+      dotnet: 3.1.100
       before_install:
         - ulimit -n 4096
 script:
-  - dotnet build -c Release
-  - dotnet test -c Release --no-build
+  - dotnet test -c Release
 notifications:
   on_success: always
   on_failure: always

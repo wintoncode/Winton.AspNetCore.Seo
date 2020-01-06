@@ -33,28 +33,25 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 
         internal IEnumerable<MetaTag> ToMetaTags()
         {
-            switch (Value)
-            {
-                case null:
-                    return Enumerable.Empty<MetaTag>();
-                case DateTime dateTime:
-                    return new List<MetaTag> { new MetaTag(FullName, dateTime.ToString("o")) };
-                case IConvertible convertible:
-                    return new List<MetaTag>
-                    {
-                        new MetaTag(FullName, Convert.ToString(convertible, CultureInfo.InvariantCulture))
-                    };
-                case IEnumerable<object> enumerable:
-                    return enumerable.SelectMany(x => new OpenGraphProperty(FullName, IsPrimary, x).ToMetaTags());
-                default:
-                    return Value
-                        .GetType()
-                        .GetProperties()
-                        .Select(p => Create(p, this))
-                        .OrderByDescending(ogp => ogp.IsPrimary)
-                        .ThenBy(ogp => ogp.Name)
-                        .SelectMany(ogp => ogp.ToMetaTags());
-            }
+            return Value switch {
+                null => Enumerable.Empty<MetaTag>(),
+                DateTime dateTime => new List<MetaTag> { new MetaTag(FullName, dateTime.ToString("o")) },
+                IConvertible convertible => new List<MetaTag>
+                {
+                    new MetaTag(FullName, Convert.ToString(convertible, CultureInfo.InvariantCulture))
+                },
+                IEnumerable<object> enumerable => enumerable
+                    .SelectMany(
+                        x => new OpenGraphProperty(FullName, IsPrimary, x)
+                            .ToMetaTags()),
+                _ => Value
+                    .GetType()
+                    .GetProperties()
+                    .Select(p => Create(p, this))
+                    .OrderByDescending(ogp => ogp.IsPrimary)
+                    .ThenBy(ogp => ogp.Name)
+                    .SelectMany(ogp => ogp.ToMetaTags())
+                };
         }
 
         private static OpenGraphProperty Create(PropertyInfo propertyInfo, OpenGraphProperty parent)
@@ -66,12 +63,9 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         {
             object value = propertyInfo.GetValue(parent);
             var attribute = propertyInfo.GetCustomAttribute<OpenGraphPropertyAttribute>();
-            if (attribute != null)
-            {
-                return Create(parentPath, attribute.Name, attribute.IsPrimary, value);
-            }
-
-            return Create(parentPath, propertyInfo.Name.ConvertTitleCaseToSnakeCase(), false, value);
+            return attribute is null
+                ? Create(parentPath, propertyInfo.Name.ConvertTitleCaseToSnakeCase(), false, value)
+                : Create(parentPath, attribute.Name, attribute.IsPrimary, value);
         }
 
         private static OpenGraphProperty Create(string parentPath, string name, bool isPrimary, object value)

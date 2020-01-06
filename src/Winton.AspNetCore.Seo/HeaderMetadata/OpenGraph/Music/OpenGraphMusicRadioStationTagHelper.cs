@@ -20,6 +20,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Music
         /// <summary>
         ///     Gets or sets the creator of this station. This is a URL of a page with og:type profile.
         /// </summary>
-        public string Creator { get; set; }
+        public string? Creator { get; set; }
     }
 }

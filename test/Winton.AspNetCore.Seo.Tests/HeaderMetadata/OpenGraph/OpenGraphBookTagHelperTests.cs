@@ -93,7 +93,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             {
                 var tagHelper = new OpenGraphBookTagHelper();
 
-                string type = tagHelper.Type;
+                string? type = tagHelper.Type;
 
                 type.Should().Be("book");
             }

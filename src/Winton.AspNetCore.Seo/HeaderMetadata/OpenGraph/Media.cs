@@ -20,17 +20,17 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         /// <summary>
         ///     Gets or sets the secure (https) URL of the media.
         /// </summary>
-        public string SecureUrl { get; set; }
+        public string? SecureUrl { get; set; }
 
         /// <summary>
         ///     Gets or sets the MIME type of the media.
         /// </summary>
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         ///     Gets the URL of the media.
         /// </summary>
         [OpenGraphProperty(IsPrimary = true)]
-        public string Url { get; }
+        public string? Url { get; }
     }
 }

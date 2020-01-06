@@ -24,13 +24,13 @@ namespace Winton.AspNetCore.Seo.Sitemaps
         ///     Gets or sets the last modified value for the URL.
         /// </summary>
         [DataMember(Name = "lastmod", EmitDefaultValue = false)]
-        public string LastModified { get; set; }
+        public string? LastModified { get; set; }
 
         /// <summary>
         ///     Gets or sets the location of the page. This is the absolute URL of the page.
         /// </summary>
         [DataMember(Name = "loc")]
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
         /// <summary>
         ///     Gets or sets the relative priority of the page. This should be a value in the range [0.0, 1.0].

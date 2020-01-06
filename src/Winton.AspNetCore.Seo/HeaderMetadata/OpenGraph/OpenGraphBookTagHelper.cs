@@ -11,7 +11,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
     ///     An Open Graph tag helper for book type pages.
     ///     This object type represents a book or publication.
     ///     This is an appropriate type for ebooks, as well as traditional paperback or hardback books.
-    ///     Do not use this type to represent magazines
+    ///     Do not use this type to represent magazines.
     /// </summary>
     [OpenGraphNamespace("book", "http://ogp.me/ns/book#")]
     public sealed class OpenGraphBookTagHelper : OpenGraphTagHelper
@@ -28,12 +28,12 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         ///     Gets or sets the authors of this book. Each value is a URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(Name = "author")]
-        public IEnumerable<string> Authors { get; set; }
+        public IEnumerable<string>? Authors { get; set; }
 
         /// <summary>
         ///     Gets or sets the ISBN of this book.
         /// </summary>
-        public string Isbn { get; set; }
+        public string? Isbn { get; set; }
 
         /// <summary>
         ///     Gets or sets the date that the book was released.
@@ -44,6 +44,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         ///     Gets or sets the tag words associated with this book.
         /// </summary>
         [OpenGraphProperty(Name = "tag")]
-        public IEnumerable<string> Tags { get; set; }
+        public IEnumerable<string>? Tags { get; set; }
     }
 }

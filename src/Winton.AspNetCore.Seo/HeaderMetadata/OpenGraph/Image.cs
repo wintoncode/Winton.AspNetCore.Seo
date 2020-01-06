@@ -22,7 +22,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         ///     Gets or sets a description of what is in the image (not a caption).
         ///     If the page specifies an image it should specify alt.
         /// </summary>
-        public string Alt { get; set; }
+        public string? Alt { get; set; }
 
         /// <summary>
         ///     Gets or sets the height of the image in pixels.

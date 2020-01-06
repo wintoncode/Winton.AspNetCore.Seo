@@ -13,15 +13,20 @@ namespace Winton.AspNetCore.Seo.Sitemaps
         [Fact]
         private void ShouldHaveCorrectDataContractName()
         {
-            typeof(SitemapUrl).GetAttribute<DataContractAttribute>().Name.Should().BeEquivalentTo("url");
+            typeof(SitemapUrl)
+                .GetAttribute<DataContractAttribute>()
+                .Name
+                .Should()
+                .BeEquivalentTo("url");
         }
 
         [Fact]
         private void ShouldHaveCorrectDataContractNamespace()
         {
-            typeof(SitemapUrl).GetAttribute<DataContractAttribute>()
-                              .Namespace.Should()
-                              .BeEquivalentTo("http://www.sitemaps.org/schemas/sitemap/0.9");
+            typeof(SitemapUrl)
+                .GetAttribute<DataContractAttribute>()
+                .Namespace.Should()
+                .BeEquivalentTo("http://www.sitemaps.org/schemas/sitemap/0.9");
         }
 
         [Fact]
@@ -51,11 +56,12 @@ namespace Winton.AspNetCore.Seo.Sitemaps
             [InlineData(nameof(SitemapUrl.Priority), false)]
             private void ShouldEmitDefault(string propertyName, bool expected)
             {
-                typeof(SitemapUrl).GetPropertyByName(propertyName)
-                                  .GetCustomAttribute<DataMemberAttribute>()
-                                  .EmitDefaultValue
-                                  .Should()
-                                  .Be(expected);
+                typeof(SitemapUrl)
+                    .GetPropertyByName(propertyName)?
+                    .GetCustomAttribute<DataMemberAttribute>()?
+                    .EmitDefaultValue
+                    .Should()
+                    .Be(expected);
             }
 
             [Theory]
@@ -65,11 +71,12 @@ namespace Winton.AspNetCore.Seo.Sitemaps
             [InlineData(nameof(SitemapUrl.Priority), "priority")]
             private void ShouldHaveCorrectDataMemberName(string propertyName, string dataMemberName)
             {
-                typeof(SitemapUrl).GetPropertyByName(propertyName)
-                                  .GetCustomAttribute<DataMemberAttribute>()
-                                  .Name
-                                  .Should()
-                                  .BeEquivalentTo(dataMemberName);
+                typeof(SitemapUrl)
+                    .GetPropertyByName(propertyName)?
+                    .GetCustomAttribute<DataMemberAttribute>()?
+                    .Name
+                    .Should()
+                    .BeEquivalentTo(dataMemberName);
             }
 
             [Theory]
@@ -79,9 +86,10 @@ namespace Winton.AspNetCore.Seo.Sitemaps
             [InlineData(nameof(SitemapUrl.Priority))]
             private void ShouldHaveDataMemberAttribute(string propertyName)
             {
-                typeof(SitemapUrl).GetPropertyByName(propertyName)
-                                  .Should()
-                                  .BeDecoratedWith<DataMemberAttribute>();
+                typeof(SitemapUrl)
+                    .GetPropertyByName(propertyName)
+                    .Should()
+                    .BeDecoratedWith<DataMemberAttribute>();
             }
         }
     }

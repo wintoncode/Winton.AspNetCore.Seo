@@ -26,13 +26,13 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
         ///     Gets or sets the actors in this movie.
         /// </summary>
         [OpenGraphProperty(Name = "actor")]
-        public IEnumerable<Actor> Actors { get; set; }
+        public IEnumerable<Actor>? Actors { get; set; }
 
         /// <summary>
         ///     Gets or sets the directors of this movie. Each value is a URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(Name = "director")]
-        public IEnumerable<string> Directors { get; set; }
+        public IEnumerable<string>? Directors { get; set; }
 
         /// <summary>
         ///     Gets or sets the length of the movie in seconds.
@@ -48,12 +48,12 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph.Videos
         ///     Gets or sets the tag words associated with this movie.
         /// </summary>
         [OpenGraphProperty(Name = "tag")]
-        public IEnumerable<string> Tags { get; set; }
+        public IEnumerable<string>? Tags { get; set; }
 
         /// <summary>
         ///     Gets or sets the writers of this movie. Each value is a URL of a page with og:type profile.
         /// </summary>
         [OpenGraphProperty(Name = "writer")]
-        public IEnumerable<string> Writers { get; set; }
+        public IEnumerable<string>? Writers { get; set; }
     }
 }
