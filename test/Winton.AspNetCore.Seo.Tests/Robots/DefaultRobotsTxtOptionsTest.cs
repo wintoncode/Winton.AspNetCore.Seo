@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.FileProviders;
 using Xunit;
 
 namespace Winton.AspNetCore.Seo.Robots
@@ -19,7 +20,7 @@ namespace Winton.AspNetCore.Seo.Robots
             [InlineData(_DevelopmentEnvironmentName)]
             private void ShouldReturnTrueForAllEnvironments(string environmentName)
             {
-                var hostingEnvironment = new HostingEnvironment
+                var hostingEnvironment = new TestHostingEnvironment
                 {
                     EnvironmentName = environmentName
                 };
@@ -37,7 +38,7 @@ namespace Winton.AspNetCore.Seo.Robots
             [InlineData(_DevelopmentEnvironmentName, true)]
             private void ShouldAllowSiteWideAccessInProduction(string environmentName, bool expected)
             {
-                var hostingEnvironment = new HostingEnvironment
+                var hostingEnvironment = new TestHostingEnvironment
                 {
                     EnvironmentName = environmentName
                 };
@@ -47,6 +48,21 @@ namespace Winton.AspNetCore.Seo.Robots
 
                 userAgentRecord.DisallowAll.Should().Be(expected);
             }
+        }
+
+        private class TestHostingEnvironment : IWebHostEnvironment
+        {
+            public string ApplicationName { get; set; } = string.Empty;
+
+            public IFileProvider ContentRootFileProvider { get; set; } = new NullFileProvider();
+
+            public string ContentRootPath { get; set; } = string.Empty;
+
+            public string EnvironmentName { get; set; } = string.Empty;
+
+            public IFileProvider WebRootFileProvider { get; set; } = new NullFileProvider();
+
+            public string WebRootPath { get; set; } = string.Empty;
         }
     }
 }

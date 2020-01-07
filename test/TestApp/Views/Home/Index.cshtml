@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>SEO Routes</h1>
+<p>The following pages should be available if the SEO routing is working correctly:</p>
+<ul>
+    <li><a href="/robots.txt">robots.txt</a></li>
+    <li><a href="/sitemap.xml">sitemap.xml</a></li>
+</ul>
+
+<h1>Head Metadata</h1>
+<p>The table below should contain OpenGraph metadata if the OpenGraph tag helpers are working correctly.</p>
+<table id="opengraph-metadata-table">
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Content</th>
+    </tr>
+    </thead>
+    <tbody id="opengraph-metadata-table-body">
+    </tbody>
+</table>
+
+<script>
+    var metas = document.getElementsByTagName('meta');
+    var table = document.getElementById('opengraph-metadata-table').getElementsByTagName('tbody')[0];
+    for (var i = 0; i < metas.length; i++) {
+        var meta = metas[i];
+        var property = meta.getAttribute('property');
+        if (property !== null && meta.content !== undefined) {
+            var row = table.insertRow(i);
+            row.insertCell(0).innerHTML = property;
+            row.insertCell(1).innerHTML = meta.content;
+        }
+    }
+</script>

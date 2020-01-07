@@ -11,7 +11,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     internal sealed class OpenGraphProperty
     {
-        private OpenGraphProperty(string fullName, bool isPrimary, object value)
+        private OpenGraphProperty(string fullName, bool isPrimary, object? value)
         {
             FullName = fullName;
             IsPrimary = isPrimary;
@@ -24,7 +24,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 
         internal string Name => FullName.Split(':').LastOrDefault();
 
-        internal object Value { get; }
+        internal object? Value { get; }
 
         internal static OpenGraphProperty Create(PropertyInfo propertyInfo, OpenGraphTagHelper tagHelper)
         {
@@ -59,16 +59,16 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             return Create(propertyInfo, parent.Value, parent.FullName);
         }
 
-        private static OpenGraphProperty Create(PropertyInfo propertyInfo, object parent, string parentPath)
+        private static OpenGraphProperty Create(PropertyInfo propertyInfo, object? parent, string parentPath)
         {
-            object value = propertyInfo.GetValue(parent);
+            object? value = propertyInfo.GetValue(parent);
             var attribute = propertyInfo.GetCustomAttribute<OpenGraphPropertyAttribute>();
             return attribute is null
                 ? Create(parentPath, propertyInfo.Name.ConvertTitleCaseToSnakeCase(), false, value)
                 : Create(parentPath, attribute.Name, attribute.IsPrimary, value);
         }
 
-        private static OpenGraphProperty Create(string parentPath, string name, bool isPrimary, object value)
+        private static OpenGraphProperty Create(string parentPath, string name, bool isPrimary, object? value)
         {
             return new OpenGraphProperty(isPrimary ? parentPath : $"{parentPath}:{name}", isPrimary, value);
         }

@@ -12,6 +12,7 @@ namespace Winton.AspNetCore.Seo
     ///     ASP.NET Core <see cref="Controller" /> for exposing endpoints for SEO documents, such as robots.txt and
     ///     sitemap.xml.
     /// </summary>
+    [Route("/")]
     public sealed class SeoController : Controller
     {
         private readonly IRobotsTxtFactory _robotsTxtFactory;
@@ -32,6 +33,7 @@ namespace Winton.AspNetCore.Seo
         ///     An endpoint that returns the robots.txt file.
         /// </summary>
         /// <returns>A <see cref="ContentResult" /> containing the robots.txt file.</returns>
+        [HttpGet("robots.txt")]
         public IActionResult GetRobots()
         {
             return Content(_robotsTxtFactory.Create(), "text/plain", Encoding.UTF8);
@@ -42,6 +44,7 @@ namespace Winton.AspNetCore.Seo
         /// </summary>
         /// <returns>An <see cref="ObjectResult" /> that is deserialized as XML to return the sitemap.xml file.</returns>
         [Produces("text/xml")]
+        [HttpGet("sitemap.xml")]
         public IActionResult GetSitemap()
         {
             return new ObjectResult(_sitemapFactory.Create());

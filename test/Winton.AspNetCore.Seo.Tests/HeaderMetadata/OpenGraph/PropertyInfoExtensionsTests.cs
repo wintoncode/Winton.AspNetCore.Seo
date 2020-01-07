@@ -56,22 +56,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
             }
         }
 
-        public sealed class GetOpenGraphPropertyName : PropertyInfoExtensionsTests
-        {
-            [Theory]
-            [InlineData(nameof(ClassWithProperties.Simple), "namespace:simple")]
-            [InlineData(nameof(ClassWithProperties.ComplexName), "namespace:complex_name")]
-            [InlineData(nameof(ClassWithProperties.PropertyWithAttribute), "namespace:attribute_value")]
-            private void ShouldGetCorrectName(string propertyName, string expected)
-            {
-                PropertyInfo? propertyInfo = typeof(ClassWithProperties).GetProperty(propertyName);
-
-                string? openGraphName = propertyInfo?.GetOpenGraphName("namespace");
-
-                openGraphName.Should().Be(expected);
-            }
-        }
-
         [OpenGraphNamespace("base", "http://example.com/base")]
         private class ClassWithNamespaceAttribute
         {
@@ -81,16 +65,6 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         private sealed class ClassWithoutNamespaceAttribute
         {
             public string? Property { get; set; }
-        }
-
-        private class ClassWithProperties
-        {
-            public string? ComplexName { get; set; }
-
-            [OpenGraphProperty(Name = "attribute_value")]
-            public string? PropertyWithAttribute { get; set; }
-
-            public string? Simple { get; set; }
         }
 
         [OpenGraphNamespace("derived", "http://example.com/derived")]

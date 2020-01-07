@@ -9,7 +9,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 {
     internal struct MetaTag
     {
-        public MetaTag(string name, string value)
+        public MetaTag(string name, string? value)
         {
             Name = name;
             Value = value;
@@ -17,18 +17,16 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 
         public string Name { get; }
 
-        public string Value { get; }
+        public string? Value { get; }
 
         public override string ToString()
         {
             var tagBuilder = new TagBuilder("meta");
             tagBuilder.Attributes.Add("property", Name);
             tagBuilder.Attributes.Add("content", Value);
-            using (var writer = new StringWriter())
-            {
-                tagBuilder.WriteTo(writer, HtmlEncoder.Default);
-                return writer.ToString();
-            }
+            using var writer = new StringWriter();
+            tagBuilder.WriteTo(writer, HtmlEncoder.Default);
+            return writer.ToString();
         }
     }
 }

@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using System;
+using System.Reflection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -54,8 +55,10 @@ namespace Winton.AspNetCore.Seo.Extensions
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddMvcCore(
-                options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
+            services
+                .AddMvcCore(
+                    options => options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()))
+                .AddApplicationPart(Assembly.GetExecutingAssembly());
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IRobotsTxtOptions, DefaultRobotsTxtOptions>();
             services.TryAddTransient<IRobotsTxtFactory, RobotsTxtFactory>();
