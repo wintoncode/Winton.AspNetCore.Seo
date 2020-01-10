@@ -1,10 +1,7 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Winton.AspNetCore.Seo.Extensions;
-using Winton.AspNetCore.Seo.Sitemaps;
 
 namespace Winton.AspNetCore.Seo.TestApp
 {
@@ -25,34 +22,14 @@ namespace Winton.AspNetCore.Seo.TestApp
                 .UseHsts()
                 .UseStaticFiles()
                 .UseRouting()
-                .UseEndpoints(
-                    endpoints =>
-                    {
-                        endpoints.MapDefaultControllerRoute();
-                    });
+                .UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var sitemapConfig = new SitemapConfig
-            {
-                Urls = new List<SitemapConfigUrl>
-                {
-                    new SitemapConfigUrl
-                    {
-                        Priority = 0.9M,
-                        RelativeUrl = "/login"
-                    }
-                }
-            };
             services
-                .AddSeo(sitemapConfig)
+                .AddSeo(_configuration)
                 .AddControllersWithViews();
-        }
-
-        public class SitemapConfig : ISitemapConfig
-        {
-            public List<SitemapConfigUrl> Urls { get; set; } = new List<SitemapConfigUrl>();
         }
     }
 }

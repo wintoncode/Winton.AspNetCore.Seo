@@ -30,7 +30,7 @@ namespace Winton.AspNetCore.Seo.Robots
         /// <summary>
         ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <c>UserAgent.Any</c>.
         /// </summary>
-        public UserAgent UserAgent { get; set; } = UserAgent.Any;
+        public string UserAgent { get; set; } = "*";
 
         /// <summary>
         ///     Creates a string representation of the <see cref="UserAgentRecord" />.

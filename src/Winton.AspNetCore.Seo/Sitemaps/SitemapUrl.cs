@@ -6,8 +6,7 @@ using System.Runtime.Serialization;
 namespace Winton.AspNetCore.Seo.Sitemaps
 {
     /// <summary>
-    ///     This class represents a single URL in a sitemap. Annotated with <see cref="DataContractAttribute" /> to enable
-    ///     serialization.
+    ///     This class represents a single URL in a sitemap.
     ///     See the <a href="https://www.sitemaps.org">sitemaps.org</a> site for more information about this format.
     /// </summary>
     [DataContract(Name = "url", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]

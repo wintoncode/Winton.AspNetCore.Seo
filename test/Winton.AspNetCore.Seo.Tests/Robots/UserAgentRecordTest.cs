@@ -13,7 +13,7 @@ namespace Winton.AspNetCore.Seo.Robots
             {
                 var userAgentRecord = new UserAgentRecord();
 
-                string record = userAgentRecord.ToString();
+                var record = userAgentRecord.ToString();
 
                 record.Should().Contain("Disallow:").And.NotContain("Disallow: /");
             }
@@ -27,7 +27,7 @@ namespace Winton.AspNetCore.Seo.Robots
                     Disallow = new List<string> { "/test" }
                 };
 
-                string record = userAgentRecord.ToString();
+                var record = userAgentRecord.ToString();
 
                 record.Should().Contain("Disallow: /");
             }
@@ -40,7 +40,7 @@ namespace Winton.AspNetCore.Seo.Robots
                     Disallow = new List<string> { "/test", "/foo" }
                 };
 
-                string record = userAgentRecord.ToString();
+                var record = userAgentRecord.ToString();
 
                 record.Should().Contain("Disallow: /test").And.Contain("Disallow: /foo");
             }
@@ -53,7 +53,7 @@ namespace Winton.AspNetCore.Seo.Robots
                     NoIndex = new List<string> { "/test", "/foo" }
                 };
 
-                string record = userAgentRecord.ToString();
+                var record = userAgentRecord.ToString();
 
                 record.Should().Contain("Noindex: /test").And.Contain("Noindex: /foo");
             }
@@ -65,10 +65,10 @@ namespace Winton.AspNetCore.Seo.Robots
             {
                 var userAgentRecord = new UserAgentRecord
                 {
-                    UserAgent = (UserAgent)userAgent
+                    UserAgent = userAgent
                 };
 
-                string record = userAgentRecord.ToString();
+                var record = userAgentRecord.ToString();
 
                 record.Should().Contain($"User-agent: {userAgent}");
             }
@@ -80,7 +80,7 @@ namespace Winton.AspNetCore.Seo.Robots
             private void UserAgentShouldDefaultToAllowAny()
             {
                 var userAgentRecord = new UserAgentRecord();
-                userAgentRecord.UserAgent.Should().Be(UserAgent.Any);
+                userAgentRecord.UserAgent.Should().Be("*");
             }
         }
     }
