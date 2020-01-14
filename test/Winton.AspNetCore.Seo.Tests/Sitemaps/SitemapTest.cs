@@ -23,8 +23,8 @@ namespace Winton.AspNetCore.Seo.Sitemaps
         private void ShouldHaveCorrectDataContractNamespace()
         {
             typeof(Sitemap).GetAttribute<CollectionDataContractAttribute>()
-                           .Namespace.Should()
-                           .BeEquivalentTo("http://www.sitemaps.org/schemas/sitemap/0.9");
+                .Namespace.Should()
+                .BeEquivalentTo("http://www.sitemaps.org/schemas/sitemap/0.9");
         }
     }
 }

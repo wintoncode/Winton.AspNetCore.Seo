@@ -11,9 +11,9 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
         internal static OpenGraphNamespaceAttribute GetOpenGraphNamespace(this PropertyInfo propertyInfo)
         {
             return propertyInfo
-                .DeclaringType?
-                .GetTypeInfo()
-                .GetCustomAttribute<OpenGraphNamespaceAttribute>()
+                       .DeclaringType?
+                       .GetTypeInfo()
+                       .GetCustomAttribute<OpenGraphNamespaceAttribute>()
                    ?? throw
                        new Exception(
                            $"The type {propertyInfo.DeclaringType?.Name} that declares the property {propertyInfo.Name} is missing the required {nameof(OpenGraphNamespaceAttribute)}");

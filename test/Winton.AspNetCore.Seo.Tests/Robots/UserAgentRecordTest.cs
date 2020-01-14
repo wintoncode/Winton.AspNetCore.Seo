@@ -8,6 +8,21 @@ namespace Winton.AspNetCore.Seo.Robots
     {
         public new sealed class ToString : UserAgentRecordTest
         {
+            [Theory]
+            [InlineData("Google")]
+            [InlineData("Bing")]
+            private void ShouldSetCorrectUserAgent(string userAgent)
+            {
+                var userAgentRecord = new UserAgentRecord
+                {
+                    UserAgent = userAgent
+                };
+
+                var record = userAgentRecord.ToString();
+
+                record.Should().Contain($"User-agent: {userAgent}");
+            }
+
             [Fact]
             private void ShouldAllowAllRoutesIfDisallowNotSet()
             {
@@ -56,21 +71,6 @@ namespace Winton.AspNetCore.Seo.Robots
                 var record = userAgentRecord.ToString();
 
                 record.Should().Contain("Noindex: /test").And.Contain("Noindex: /foo");
-            }
-
-            [Theory]
-            [InlineData("Google")]
-            [InlineData("Bing")]
-            private void ShouldSetCorrectUserAgent(string userAgent)
-            {
-                var userAgentRecord = new UserAgentRecord
-                {
-                    UserAgent = userAgent
-                };
-
-                var record = userAgentRecord.ToString();
-
-                record.Should().Contain($"User-agent: {userAgent}");
             }
         }
 
