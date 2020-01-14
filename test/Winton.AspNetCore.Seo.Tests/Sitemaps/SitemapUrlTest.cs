@@ -10,6 +10,43 @@ namespace Winton.AspNetCore.Seo.Sitemaps
 {
     public class SitemapUrlTest
     {
+        [Fact]
+        private void ShouldHaveCorrectDataContractName()
+        {
+            typeof(SitemapUrl)
+                .GetAttribute<DataContractAttribute>()
+                .Name
+                .Should()
+                .BeEquivalentTo("url");
+        }
+
+        [Fact]
+        private void ShouldHaveCorrectDataContractNamespace()
+        {
+            typeof(SitemapUrl)
+                .GetAttribute<DataContractAttribute>()
+                .Namespace.Should()
+                .BeEquivalentTo("http://www.sitemaps.org/schemas/sitemap/0.9");
+        }
+
+        [Fact]
+        private void ShouldHaveDataContractAttribute()
+        {
+            typeof(SitemapUrl).Should().BeDecoratedWith<DataContractAttribute>();
+        }
+
+        [Fact]
+        private void ShouldHaveKnownTypeAttribute()
+        {
+            typeof(SitemapUrl).GetAttributes<KnownTypeAttribute>().Any().Should().BeTrue();
+        }
+
+        [Fact]
+        private void ShouldHaveKnownTypeAttributeWithCorrectType()
+        {
+            typeof(SitemapUrl).GetAttribute<KnownTypeAttribute>().Type.Should().Be<SitemapUrl>();
+        }
+
         public class DataMembers : SitemapUrlTest
         {
             [Theory]
@@ -54,43 +91,6 @@ namespace Winton.AspNetCore.Seo.Sitemaps
                     .Should()
                     .BeDecoratedWith<DataMemberAttribute>();
             }
-        }
-
-        [Fact]
-        private void ShouldHaveCorrectDataContractName()
-        {
-            typeof(SitemapUrl)
-                .GetAttribute<DataContractAttribute>()
-                .Name
-                .Should()
-                .BeEquivalentTo("url");
-        }
-
-        [Fact]
-        private void ShouldHaveCorrectDataContractNamespace()
-        {
-            typeof(SitemapUrl)
-                .GetAttribute<DataContractAttribute>()
-                .Namespace.Should()
-                .BeEquivalentTo("http://www.sitemaps.org/schemas/sitemap/0.9");
-        }
-
-        [Fact]
-        private void ShouldHaveDataContractAttribute()
-        {
-            typeof(SitemapUrl).Should().BeDecoratedWith<DataContractAttribute>();
-        }
-
-        [Fact]
-        private void ShouldHaveKnownTypeAttribute()
-        {
-            typeof(SitemapUrl).GetAttributes<KnownTypeAttribute>().Any().Should().BeTrue();
-        }
-
-        [Fact]
-        private void ShouldHaveKnownTypeAttributeWithCorrectType()
-        {
-            typeof(SitemapUrl).GetAttribute<KnownTypeAttribute>().Type.Should().Be<SitemapUrl>();
         }
     }
 }

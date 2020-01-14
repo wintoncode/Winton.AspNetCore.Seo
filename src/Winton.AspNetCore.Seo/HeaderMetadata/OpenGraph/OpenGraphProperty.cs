@@ -33,7 +33,8 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 
         internal IEnumerable<MetaTag> ToMetaTags()
         {
-            return Value switch {
+            return Value switch
+            {
                 null => Enumerable.Empty<MetaTag>(),
                 DateTime dateTime => new List<MetaTag> { new MetaTag(FullName, dateTime.ToString("o")) },
                 IConvertible convertible => new List<MetaTag>
@@ -41,9 +42,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                     new MetaTag(FullName, Convert.ToString(convertible, CultureInfo.InvariantCulture))
                 },
                 IEnumerable<object> enumerable => enumerable
-                    .SelectMany(
-                        x => new OpenGraphProperty(FullName, IsPrimary, x)
-                            .ToMetaTags()),
+                    .SelectMany(x => new OpenGraphProperty(FullName, IsPrimary, x).ToMetaTags()),
                 _ => Value
                     .GetType()
                     .GetProperties()
@@ -51,7 +50,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                     .OrderByDescending(ogp => ogp.IsPrimary)
                     .ThenBy(ogp => ogp.Name)
                     .SelectMany(ogp => ogp.ToMetaTags())
-                };
+            };
         }
 
         private static OpenGraphProperty Create(PropertyInfo propertyInfo, OpenGraphProperty parent)
