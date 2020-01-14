@@ -6,30 +6,34 @@ using System.Text;
 using Flurl;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Winton.AspNetCore.Seo.Robots
 {
     internal sealed class RobotsTxtFactory : IRobotsTxtFactory
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IRobotsTxtOptions _options;
+        private readonly IOptionsSnapshot<SeoOptions> _optionsSnapshot;
 
-        public RobotsTxtFactory(IHttpContextAccessor httpContextAccessor, IRobotsTxtOptions options)
+        public RobotsTxtFactory(
+            IOptionsSnapshot<SeoOptions> optionsSnapshot,
+            IHttpContextAccessor httpContextAccessor)
         {
+            _optionsSnapshot = optionsSnapshot;
             _httpContextAccessor = httpContextAccessor;
-            _options = options;
         }
 
         public string Create()
         {
+            RobotsTxtOptions options = _optionsSnapshot.Value.RobotsTxt;
             var stringBuilder = new StringBuilder();
-            foreach (UserAgentRecord userAgentRecord in _options.UserAgentRecords ??
+            foreach (UserAgentRecord userAgentRecord in options.UserAgentRecords ??
                                                         Enumerable.Empty<UserAgentRecord>())
             {
                 stringBuilder.AppendLine(userAgentRecord.ToString());
             }
 
-            if (_options.AddSitemapUrl)
+            if (options.AddSitemapUrl)
             {
                 stringBuilder.AppendLine(CreateSitemapUrl());
             }

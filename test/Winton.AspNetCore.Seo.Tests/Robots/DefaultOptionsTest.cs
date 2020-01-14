@@ -6,13 +6,13 @@ using Xunit;
 
 namespace Winton.AspNetCore.Seo.Robots
 {
-    public class DefaultRobotsTxtOptionsTest
+    public class DefaultOptionsTest
     {
         private const string _DevelopmentEnvironmentName = "Development";
         private const string _ProductionEnvironmentName = "Production";
         private const string _StagingEnvironmentName = "Staging";
 
-        public sealed class AddSitemapUrl : DefaultRobotsTxtOptionsTest
+        public sealed class AddSitemapUrl : DefaultOptionsTest
         {
             [Theory]
             [InlineData(_ProductionEnvironmentName)]
@@ -24,13 +24,14 @@ namespace Winton.AspNetCore.Seo.Robots
                 {
                     EnvironmentName = environmentName
                 };
-                var defaultRobotsTxtOptions = new DefaultRobotsTxtOptions(hostingEnvironment);
+                var options = new SeoOptions();
+                DefaultOptions.Configure(options, hostingEnvironment);
 
-                defaultRobotsTxtOptions.AddSitemapUrl.Should().BeTrue();
+                options.RobotsTxt.AddSitemapUrl.Should().BeTrue();
             }
         }
 
-        public sealed class UserAgentRecords : DefaultRobotsTxtOptionsTest
+        public sealed class UserAgentRecords : DefaultOptionsTest
         {
             [Theory]
             [InlineData(_ProductionEnvironmentName, false)]
@@ -42,9 +43,10 @@ namespace Winton.AspNetCore.Seo.Robots
                 {
                     EnvironmentName = environmentName
                 };
-                var defaultRobotsTxtOptions = new DefaultRobotsTxtOptions(hostingEnvironment);
+                var options = new SeoOptions();
+                DefaultOptions.Configure(options, hostingEnvironment);
 
-                UserAgentRecord userAgentRecord = defaultRobotsTxtOptions.UserAgentRecords.Single();
+                UserAgentRecord userAgentRecord = options.RobotsTxt.UserAgentRecords.Single();
 
                 userAgentRecord.DisallowAll.Should().Be(expected);
             }

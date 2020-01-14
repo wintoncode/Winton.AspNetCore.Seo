@@ -6,13 +6,13 @@ using System.Collections.Generic;
 namespace Winton.AspNetCore.Seo.Sitemaps
 {
     /// <summary>
-    ///     The config used to define the sitemap.
+    ///     The options used to create the sitemap.
     /// </summary>
-    public interface ISitemapConfig
+    public sealed class SitemapOptions
     {
         /// <summary>
-        ///     Gets a list of <see cref="SitemapConfigUrl" /> values.
+        ///     Gets or sets the URLs in the sitemap.
         /// </summary>
-        List<SitemapConfigUrl> Urls { get; }
+        public IEnumerable<SitemapUrlOptions>? Urls { get; set; }
     }
 }

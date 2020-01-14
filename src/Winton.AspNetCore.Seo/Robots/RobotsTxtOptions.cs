@@ -8,16 +8,17 @@ namespace Winton.AspNetCore.Seo.Robots
     /// <summary>
     ///     The options used to determine how the robots.txt file is built.
     /// </summary>
-    public interface IRobotsTxtOptions
+    public sealed class RobotsTxtOptions
     {
         /// <summary>
-        ///     Gets a value indicating whether the URL to the sitemap should be included in the robots.txt file.
+        ///     Gets or sets a value indicating whether the URL to the sitemap should be included in the robots.txt file.
+        ///     Defaults to <c>true</c>.
         /// </summary>
-        bool AddSitemapUrl { get; }
+        public bool AddSitemapUrl { get; set; } = true;
 
         /// <summary>
-        ///     Gets the collection of <see cref="UserAgentRecord" />s to put in the robots.txt file.
+        ///     Gets or sets the collection of <see cref="UserAgentRecord" />s to put in the robots.txt file.
         /// </summary>
-        IEnumerable<UserAgentRecord>? UserAgentRecords { get; }
+        public IEnumerable<UserAgentRecord>? UserAgentRecords { get; set; }
     }
 }

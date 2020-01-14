@@ -4,25 +4,32 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Winton.AspNetCore.Seo.Sitemaps
 {
     internal sealed class SitemapFactory : ISitemapFactory
     {
-        private readonly ISitemapConfig _config;
         private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IOptionsSnapshot<SeoOptions> _optionsSnapshot;
 
-        public SitemapFactory(ISitemapConfig config, IHttpContextAccessor contextAccessor)
+        public SitemapFactory(IOptionsSnapshot<SeoOptions> optionsSnapshot, IHttpContextAccessor contextAccessor)
         {
-            _config = config;
+            _optionsSnapshot = optionsSnapshot;
             _contextAccessor = contextAccessor;
         }
 
         public Sitemap Create()
         {
-            string baseUri = _contextAccessor.HttpContext.Request.GetEncodedUrl()
-                                             .Replace(Constants.SitemapUrl, string.Empty);
-            return new Sitemap(_config.Urls.Select(url => url.ToSitemapUrl(baseUri)));
+            string baseUri = _contextAccessor
+                .HttpContext
+                .Request
+                .GetEncodedUrl()
+                .Replace(Constants.SitemapUrl, string.Empty);
+            return
+                new Sitemap(
+                    _optionsSnapshot.Value.Sitemap.Urls?.Select(url => url.ToSitemapUrl(baseUri)) ??
+                    Enumerable.Empty<SitemapUrl>());
         }
     }
 }

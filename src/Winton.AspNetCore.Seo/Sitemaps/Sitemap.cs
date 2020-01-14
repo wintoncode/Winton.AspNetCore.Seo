@@ -2,13 +2,13 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace Winton.AspNetCore.Seo.Sitemaps
 {
     /// <summary>
-    ///     A class that defines the data in a sitemap. It has the <see cref="CollectionDataContractAttribute" /> for
-    ///     serialization.
+    ///     Defines the data in a sitemap.
     /// </summary>
     [CollectionDataContract(Name = "urlset", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
     public sealed class Sitemap : List<SitemapUrl>
@@ -26,7 +26,7 @@ namespace Winton.AspNetCore.Seo.Sitemaps
         /// </summary>
         /// <param name="sitemapUrls">The URLs from which the sitemap is created.</param>
         public Sitemap(IEnumerable<SitemapUrl> sitemapUrls)
-            : base(sitemapUrls)
+            : base(sitemapUrls ?? Enumerable.Empty<SitemapUrl>())
         {
         }
     }
