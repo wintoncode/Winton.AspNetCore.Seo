@@ -28,7 +28,7 @@ namespace Winton.AspNetCore.Seo.Robots
         public IEnumerable<string>? NoIndex { get; set; }
 
         /// <summary>
-        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <c>UserAgent.Any</c>.
+        ///     Gets or sets the <see cref="UserAgent" /> to which the record applies. Defaults to <c>"*"</c>.
         /// </summary>
         public string UserAgent { get; set; } = "*";
 
