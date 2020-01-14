@@ -184,11 +184,11 @@ Calling `AddSeo` instead allows you to specify the options. There are several wa
                 "UserAgentRecords": [
                     {
                         "UserAgent": "bing",
-                        "Disallow": "/login" -- should be an array
+                        "Disallow": [ "/login" ]
                     },
                     {
                         "UserAgent": "google",
-                        "Disallow": "*"
+                        "Disallow": [ "*" ]
                     }
                 ]
             }
