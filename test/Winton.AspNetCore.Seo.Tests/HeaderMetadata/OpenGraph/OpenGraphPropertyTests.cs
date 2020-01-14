@@ -22,7 +22,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                 PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName) ??
                                             throw new ArgumentNullException(nameof(propertyInfo));
 
-                OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
+                var openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
                 openGraphProperty.FullName.Should().Be(expected);
             }
@@ -37,7 +37,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                 PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName) ??
                                             throw new ArgumentNullException(nameof(propertyInfo));
 
-                OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
+                var openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
                 openGraphProperty.IsPrimary.Should().Be(expected);
             }
@@ -57,7 +57,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                 PropertyInfo propertyInfo = openGraphTagHelper.GetType().GetProperty(propertyName)
                                             ?? throw new ArgumentNullException(nameof(propertyInfo));
 
-                OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
+                var openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
                 openGraphProperty.Value.Should().Be(expected);
             }
@@ -72,7 +72,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                 PropertyInfo propertyInfo =
                     openGraphTagHelper.GetType().GetProperty(nameof(TestOpenGraphTagHelper.BogStandardProperty)) ??
                     throw new ArgumentNullException(nameof(propertyInfo));
-                OpenGraphProperty openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
+                var openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
                 string name = openGraphProperty.Name;
 

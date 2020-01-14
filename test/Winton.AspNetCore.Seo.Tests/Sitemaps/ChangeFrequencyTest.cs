@@ -7,12 +7,6 @@ namespace Winton.AspNetCore.Seo.Sitemaps
 {
     public class ChangeFrequencyTest
     {
-        [Fact]
-        private void ShouldHaveDataContractAttribute()
-        {
-            typeof(ChangeFrequency).Should().BeDecoratedWith<DataContractAttribute>();
-        }
-
         public class EnumMembers : ChangeFrequencyTest
         {
             [Theory]
@@ -49,6 +43,12 @@ namespace Winton.AspNetCore.Seo.Sitemaps
                     .Should()
                     .NotBeEmpty();
             }
+        }
+
+        [Fact]
+        private void ShouldHaveDataContractAttribute()
+        {
+            typeof(ChangeFrequency).Should().BeDecoratedWith<DataContractAttribute>();
         }
     }
 }

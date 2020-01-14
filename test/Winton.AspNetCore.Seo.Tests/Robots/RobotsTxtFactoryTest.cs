@@ -23,6 +23,27 @@ namespace Winton.AspNetCore.Seo.Robots
 
         public sealed class Create : RobotsTxtFactoryTest
         {
+            [Theory]
+            [InlineData(false, false)]
+            [InlineData(true, true)]
+            private void ShouldIncludeSitemapUrl(bool addsiteMapUrl, bool expected)
+            {
+                _optionsSnapshot
+                    .Setup(os => os.Value)
+                    .Returns(
+                        new SeoOptions
+                        {
+                            RobotsTxt =
+                            {
+                                AddSitemapUrl = addsiteMapUrl
+                            }
+                        });
+
+                string robotsTxt = _robotsFactory.Create();
+
+                robotsTxt.Contains("Sitemap").Should().Be(expected);
+            }
+
             [Fact]
             private void ShouldAddAllUserAgentRecordsSeperatedByABlankLine()
             {
@@ -89,27 +110,6 @@ namespace Winton.AspNetCore.Seo.Robots
                 string robotsTxt = _robotsFactory.Create();
 
                 robotsTxt.Should().Contain("Sitemap: https://example.com:5000/app-root/sitemap.xml");
-            }
-
-            [Theory]
-            [InlineData(false, false)]
-            [InlineData(true, true)]
-            private void ShouldIncludeSitemapUrl(bool addsiteMapUrl, bool expected)
-            {
-                _optionsSnapshot
-                    .Setup(os => os.Value)
-                    .Returns(
-                        new SeoOptions
-                        {
-                            RobotsTxt =
-                            {
-                                AddSitemapUrl = addsiteMapUrl
-                            }
-                        });
-
-                string robotsTxt = _robotsFactory.Create();
-
-                robotsTxt.Contains("Sitemap").Should().Be(expected);
             }
 
             [Fact]
