@@ -4,15 +4,18 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <Description>ASP.NET Core Library for adding SEO metadata to websites</Description>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
     <PackageId>Winton.AspNetCore.Seo</PackageId>
     <PackageIcon>icon.jpg</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/wintoncode/Winton.AspNetCore.Seo</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, ASP.NET, Core, SEO, Search, Engine, Optimization</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RazorLangVersion>3.0</RazorLangVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wintoncode/Winton.AspNetCore.Seo</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Title>Winton ASP.NET Core SEO Library</Title>
   </PropertyGroup>
@@ -33,6 +36,7 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.7.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.8.14" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

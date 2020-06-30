@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Authors>Winton</Authors>
     <Company>Winton</Company>
-    <Copyright>Copyright 2019 Winton</Copyright>
+    <Copyright>Copyright 2020 Winton</Copyright>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Rules.ruleset</CodeAnalysisRuleSet>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>

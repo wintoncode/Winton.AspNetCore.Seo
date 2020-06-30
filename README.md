@@ -1,7 +1,7 @@
 # Winton.AspNetCore.Seo
 
-[![Build status](https://ci.appveyor.com/api/projects/status/722rlfhiy67qcwxb/branch/master?svg=true)](https://ci.appveyor.com/project/wintoncode/winton-aspnetcore-seo/branch/master)
-[![Travis Build Status](https://travis-ci.org/wintoncode/Winton.AspNetCore.Seo.svg?branch=master)](https://travis-ci.org/wintoncode/Winton.AspNetCore.Seo)
+[![Appveyor](https://ci.appveyor.com/api/projects/status/722rlfhiy67qcwxb/branch/master?svg=true)](https://ci.appveyor.com/project/wintoncode/winton-aspnetcore-seo/branch/master)
+[![Travis CI](https://travis-ci.com/wintoncode/Winton.AspNetCore.Seo.svg?branch=master)](https://travis-ci.com/wintoncode/Winton.AspNetCore.Seo)
 [![NuGet version](https://img.shields.io/nuget/v/Winton.AspNetCore.Seo.svg)](https://www.nuget.org/packages/Winton.AspNetCore.Seo)
 [![NuGet version](https://img.shields.io/nuget/vpre/Winton.AspNetCore.Seo.svg)](https://www.nuget.org/packages/Winton.AspNetCore.Seo)
 
