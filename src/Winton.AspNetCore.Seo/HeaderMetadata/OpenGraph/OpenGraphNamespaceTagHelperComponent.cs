@@ -20,7 +20,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                 TagHelperContent tagHelperContent = await output.GetChildContentAsync();
                 var htmlDoc = new HtmlDocument();
                 htmlDoc.LoadHtml(tagHelperContent.GetContent());
-                HtmlNode namespaceMetaTag = htmlDoc
+                HtmlNode? namespaceMetaTag = htmlDoc
                     .DocumentNode
                     .Descendants("meta")
                     .SingleOrDefault(node => node.Attributes.Any(HasNamespaceProperty));

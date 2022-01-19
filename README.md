@@ -1,18 +1,19 @@
 # Winton.AspNetCore.Seo
 
-[![Appveyor](https://ci.appveyor.com/api/projects/status/722rlfhiy67qcwxb/branch/master?svg=true)](https://ci.appveyor.com/project/wintoncode/winton-aspnetcore-seo/branch/master)
-[![Travis CI](https://travis-ci.com/wintoncode/Winton.AspNetCore.Seo.svg?branch=master)](https://travis-ci.com/wintoncode/Winton.AspNetCore.Seo)
-[![NuGet version](https://img.shields.io/nuget/v/Winton.AspNetCore.Seo.svg)](https://www.nuget.org/packages/Winton.AspNetCore.Seo)
-[![NuGet version](https://img.shields.io/nuget/vpre/Winton.AspNetCore.Seo.svg)](https://www.nuget.org/packages/Winton.AspNetCore.Seo)
+Add SEO metadata to your ASP.NET Core website.
+
+[![NuGet Badge](https://buildstats.info/nuget/Winton.AspNetCore.Seo)](https://www.nuget.org/packages/Winton.AspNetCore.Seo/)
+
+[![Build history](https://buildstats.info/github/chart/wintoncode/Winton.AspNetCore.Seo?branch=master)](https://github.com/wintoncode/Winton.AspNetCore.Seo/actions)
 
 ## What does it do
 
 It makes it easy to add search engine metadata to your ASP.NET Core website, allowing you to focus on writing the code you want to write.
 It provides three things:
 
--   a robots.txt file,
--   a sitemap.xml file, and
--   HTML `<meta>` tags
+- a robots.txt file,
+- a sitemap.xml file, and
+- HTML `<meta>` tags
 
 You no longer have to look up the format of each of these separate protocols, or pollute your HTML with tons of `<meta>` tags.
 
@@ -131,9 +132,9 @@ Your sitemap can be defined in various ways when calling either `AddSeoWithDefau
 The robots.txt file can be configured in the same manner as the sitemap.
 If `AddSeoWithDefaultRobots` is called the default robots.txt options will be used which applies the following policy:
 
--   The URL of the sitemap is specified in all environments.
--   In the production environment all user agents are allowed to index any part of the site.
--   In all other environments, all user agents are disallowed from indexing any part of the site.
+- The URL of the sitemap is specified in all environments.
+- In the production environment all user agents are allowed to index any part of the site.
+- In all other environments, all user agents are disallowed from indexing any part of the site.
 
 _Note: It's always worth remembering that malicious bots can just ignore a robots.txt file, so it should not be relied on to hide any sensitive parts of the site._
 
@@ -200,27 +201,25 @@ Calling `AddSeo` instead allows you to specify the options. There are several wa
 
 The `RobotsTxtOptions` has the following properties:
 
--   `AddSitemapUrl` - Determines whether the URL to the sitemap should be included in the robots.txt file
--   `UserAgentRecords` - A collection of user agent records.
-    Use this to define the parts of the site that you want each particular robot to ignore.
-    You can define a record using the wildcard user agent to apply the same rules to all robots by using `*`.
+- `AddSitemapUrl` - Determines whether the URL to the sitemap should be included in the robots.txt file
+- `UserAgentRecords` - A collection of user agent records. Use this to define the parts of the site that you want each particular robot to ignore. You can define a record using the wildcard user agent to apply the same rules to all robots by using `*`.
 
 ### Available Open Graph tag helpers
 
 The followings tag helpers are available from this library when the `@addTagHelper *, Winton.AspNetCore.Seo` import statement is used:
 
--   `open-graph-article`
--   `open-graph-book`
--   `open-graph-profile`
--   `open-graph-website`
--   `open-graph-music-album`
--   `open-graph-music-playlist`
--   `open-graph-music-radio-station`
--   `open-graph-music-song`
--   `open-graph-video-episode`
--   `open-graph-video-movie`
--   `open-graph-video-other`
--   `open-graph-video-tv-show`
+- `open-graph-article`
+- `open-graph-book`
+- `open-graph-profile`
+- `open-graph-website`
+- `open-graph-music-album`
+- `open-graph-music-playlist`
+- `open-graph-music-radio-station`
+- `open-graph-music-song`
+- `open-graph-video-episode`
+- `open-graph-video-movie`
+- `open-graph-video-other`
+- `open-graph-video-tv-show`
 
 In order to assign some of the properties that have types defined by this library, such as `Audio` and `Image`, you will need to also add `@using Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph` to the top of your cshtml file.
 
@@ -228,8 +227,8 @@ In order to assign some of the properties that have types defined by this librar
 
 Start up your website and you should be able to see the files at the following URLs in a browser:
 
--   /robots.txt
--   /sitemap.xml
+- /robots.txt
+- /sitemap.xml
 
 There should also be several `<meta>` tags in the head of the HTML pages of your site if you have added any Open Graph tag helpers.
 
