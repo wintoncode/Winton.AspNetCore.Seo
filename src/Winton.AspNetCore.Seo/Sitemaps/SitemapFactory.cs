@@ -22,7 +22,7 @@ namespace Winton.AspNetCore.Seo.Sitemaps
         public Sitemap Create()
         {
             string baseUri = _contextAccessor
-                .HttpContext
+                .HttpContext!
                 .Request
                 .GetEncodedUrl()
                 .Replace(Constants.SitemapUrl, string.Empty);

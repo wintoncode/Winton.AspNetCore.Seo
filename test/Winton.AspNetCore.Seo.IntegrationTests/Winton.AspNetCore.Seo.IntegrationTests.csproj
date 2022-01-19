@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>Winton.AspNetCore.Seo</RootNamespace>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>net6.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

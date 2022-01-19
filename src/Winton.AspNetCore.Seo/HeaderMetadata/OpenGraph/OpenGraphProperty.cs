@@ -22,7 +22,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
 
         internal bool IsPrimary { get; }
 
-        internal string Name => FullName.Split(':').LastOrDefault();
+        internal string? Name => FullName.Split(':').LastOrDefault();
 
         internal object? Value { get; }
 

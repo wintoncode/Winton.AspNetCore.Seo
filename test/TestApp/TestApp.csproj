@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>Winton.AspNetCore.Seo.TestApp</RootNamespace>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>net6.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

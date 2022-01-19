@@ -41,11 +41,11 @@ namespace Winton.AspNetCore.Seo.Robots
             StringBuilder stringBuilder = new StringBuilder()
                 .AppendLine($"User-agent: {UserAgent}");
 
-            IEnumerable<string> disallowedUrls = DisallowAll
+            IEnumerable<string?> disallowedUrls = DisallowAll
                 ? new List<string> { "/" }
                 : (Disallow ?? Enumerable.Empty<string>()).DefaultIfEmpty();
 
-            foreach (string url in disallowedUrls)
+            foreach (string? url in disallowedUrls)
             {
                 stringBuilder.AppendLine($"Disallow: {url}");
             }
