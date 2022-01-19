@@ -24,7 +24,7 @@ namespace Winton.AspNetCore.Seo
                 typeof(MvcStartup),
                 new StringBuilder()
                     .AppendLine("User-agent: *")
-                    .AppendLine("Disallow: ")
+                    .AppendLine("Disallow: /")
                     .AppendLine()
                     .AppendLine("Sitemap: http://localhost/sitemap.xml")
                     .ToString()
@@ -34,7 +34,7 @@ namespace Winton.AspNetCore.Seo
                 typeof(DefaultSeoStartup),
                 new StringBuilder()
                     .AppendLine("User-agent: *")
-                    .AppendLine("Disallow: ")
+                    .AppendLine("Disallow: /")
                     .AppendLine()
                     .AppendLine("Sitemap: http://localhost/sitemap.xml")
                     .ToString()

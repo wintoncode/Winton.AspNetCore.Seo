@@ -74,7 +74,7 @@ namespace Winton.AspNetCore.Seo.HeaderMetadata.OpenGraph
                     throw new ArgumentNullException(nameof(propertyInfo));
                 var openGraphProperty = OpenGraphProperty.Create(propertyInfo, openGraphTagHelper);
 
-                string name = openGraphProperty.Name;
+                string? name = openGraphProperty.Name;
 
                 name.Should().Be("bog_standard_property");
             }

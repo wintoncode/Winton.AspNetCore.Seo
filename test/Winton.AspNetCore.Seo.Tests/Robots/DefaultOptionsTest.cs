@@ -46,7 +46,7 @@ namespace Winton.AspNetCore.Seo.Robots
                 var options = new SeoOptions();
                 DefaultOptions.Configure(options, hostingEnvironment);
 
-                UserAgentRecord userAgentRecord = options.RobotsTxt.UserAgentRecords.Single();
+                UserAgentRecord userAgentRecord = options.RobotsTxt.UserAgentRecords!.Single();
 
                 userAgentRecord.DisallowAll.Should().Be(expected);
             }
